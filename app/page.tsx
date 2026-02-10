@@ -1,65 +1,117 @@
-import Image from "next/image";
+import dynamic from "next/dynamic";
+import EcoopsOverview from "@/components/sections/ecoops-overview";
+import SwmsOverview from "@/components/sections/swms-overview";
 
-export default function Home() {
-  return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
-  );
+const RealityCompilerHero = dynamic(
+	() => import("@/components/hero/reality-compiler-hero"),
+	{ ssr: false },
+);
+
+export default function HomePage() {
+	return (
+		<>
+			{/* Hero Section */}
+			<RealityCompilerHero
+				title="D-VOID"
+				subtitle="Technical Operations Specialist"
+				tagline="Compiling industrial systems into operational reality"
+			/>
+
+			{/* SWMS Platform Overview - Pinned Section 1 */}
+			<SwmsOverview />
+
+			{/* EcoOps Dashboard Overview - Pinned Section 2 */}
+			<EcoopsOverview />
+
+			{/* Skills Section */}
+			<section className="py-24 px-6 bg-background">
+				<div className="mx-auto max-w-6xl">
+					<div className="text-center mb-16">
+						<p className="text-sm font-mono text-primary/70 tracking-widest uppercase mb-4">
+							Expertise
+						</p>
+						<h2 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground">
+							Technical Stack
+						</h2>
+					</div>
+
+					<div className="grid md:grid-cols-3 gap-8">
+						{/* Backend */}
+						<div className="p-6 rounded-lg bg-card border border-border/50">
+							<h3 className="text-lg font-semibold text-foreground mb-4">
+								Backend
+							</h3>
+							<ul className="space-y-2 text-sm text-muted-foreground">
+								<li>NestJS / Express</li>
+								<li>PostgreSQL / Redis</li>
+								<li>Prisma ORM</li>
+								<li>Docker / Kubernetes</li>
+								<li>WebSockets / MQTT</li>
+							</ul>
+						</div>
+
+						{/* Frontend */}
+						<div className="p-6 rounded-lg bg-card border border-border/50">
+							<h3 className="text-lg font-semibold text-foreground mb-4">
+								Frontend
+							</h3>
+							<ul className="space-y-2 text-sm text-muted-foreground">
+								<li>Next.js / React</li>
+								<li>TypeScript</li>
+								<li>Tailwind CSS</li>
+								<li>Three.js / R3F</li>
+								<li>Motion / GSAP</li>
+							</ul>
+						</div>
+
+						{/* Industrial IoT */}
+						<div className="p-6 rounded-lg bg-card border border-border/50">
+							<h3 className="text-lg font-semibold text-foreground mb-4">
+								Industrial IoT
+							</h3>
+							<ul className="space-y-2 text-sm text-muted-foreground">
+								<li>ZKTeco Integration</li>
+								<li>Hikvision ISAPI</li>
+								<li>Mettler Toledo DDE</li>
+								<li>RS232 / Modbus</li>
+								<li>ONVIF Protocol</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			{/* CTA Section */}
+			<section className="py-24 px-6 bg-muted/30">
+				<div className="mx-auto max-w-4xl text-center">
+					<h2 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground mb-6">
+						Ready to build something?
+					</h2>
+					<p className="text-lg text-muted-foreground mb-8">
+						Let&apos;s discuss your project and explore how I can help bring
+						your vision to life.
+					</p>
+					<a
+						href="/contact"
+						className="inline-flex items-center gap-2 px-8 py-4 rounded-lg bg-primary text-primary-foreground font-medium hover:bg-primary/90 transition-colors"
+					>
+						Get in Touch
+						<svg
+							className="w-4 h-4"
+							fill="none"
+							stroke="currentColor"
+							viewBox="0 0 24 24"
+						>
+							<path
+								strokeLinecap="round"
+								strokeLinejoin="round"
+								strokeWidth={2}
+								d="M17 8l4 4m0 0l-4 4m4-4H3"
+							/>
+						</svg>
+					</a>
+				</div>
+			</section>
+		</>
+	);
 }
