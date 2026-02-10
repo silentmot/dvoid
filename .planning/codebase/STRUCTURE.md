@@ -1,0 +1,172 @@
+# Codebase Structure
+
+**Analysis Date:** 2026-02-10
+
+## Directory Layout
+
+```
+d-void/
+├── app/                     # Next.js App Router
+│   ├── layout.tsx          # Root layout with providers
+│   ├── page.tsx            # Home page
+│   └── (routes)/           # Route group
+│       ├── about/
+│       │   └── page.tsx
+│       ├── case-studies/
+│       │   ├── page.tsx
+│       │   └── [slug]/
+│       │       └── page.tsx
+│       ├── contact/
+│       │   └── page.tsx
+│       ├── layout.tsx      # Route group layout
+│       ├── projects/
+│       │   └── page.tsx
+│       ├── uses/
+│       │   └── page.tsx
+├── components/             # React components
+│   ├── layout/             # Layout components
+│   │   ├── footer.tsx
+│   │   ├── index.ts        # Barrel export
+│   │   ├── navigation.tsx
+│   │   └── smooth-scroll-provider.tsx
+│   ├── sections/           # Page sections
+│   │   ├── ecoops-overview.tsx
+│   │   ├── index.ts        # Barrel export
+│   │   ├── pinned-section.tsx
+│   │   └── swms-overview.tsx
+│   ├── hero/               # Hero components
+│   │   └── reality-compiler-hero.tsx
+│   ├── component-example.tsx
+│   └── example.tsx
+├── content/                # MDX content files
+│   └── case-studies/
+│       ├── ecoops-dashboard.mdx
+│       └── swms-platform.mdx
+├── lib/                    # Utilities and helpers
+│   ├── mdx/
+│   │   └── index.ts
+│   └── utils.ts
+├── public/                 # Static assets
+├── .planning/codebase/     # Planning documents
+├── package.json            # Dependencies and scripts
+├── next.config.ts          # Next.js configuration
+├── tailwind.config.*       # Tailwind CSS configuration
+├── tsconfig.json           # TypeScript configuration
+├── biome.json              # Biome linter configuration
+└── mdx-components.tsx      # MDX component configuration
+```
+
+## Directory Purposes
+
+**app/:**
+- Purpose: Next.js App Router pages and layouts
+- Contains: Route definitions, page components, layout hierarchies
+- Key files:
+  - `app/layout.tsx` - Root layout with global providers
+  - `app/page.tsx` - Homepage with hero sections
+  - `app/(routes)/` - Route group for all pages
+
+**app/(routes)/:**
+- Purpose: Route grouping for better organization
+- Contains: All route pages and shared layout
+- Key files:
+  - `layout.tsx` - Empty wrapper for route grouping
+  - `page.tsx` files for each route
+
+**components/:**
+- Purpose: Reusable React components
+- Contains: UI components organized by type
+- Key files:
+  - `layout/` - Navigation, footer, scroll providers
+  - `sections/` - Reusable page sections
+  - `hero/` - Hero section components
+
+**content/:**
+- Purpose: MDX content files
+- Contains: Case studies with gray-matter frontmatter
+- Key files:
+  - `case-studies/` - MDX files for each case study
+
+**lib/:**
+- Purpose: Shared utilities and helpers
+- Contains: Utility functions and configuration
+- Key files:
+  - `utils.ts` - cn() function for class merging
+  - `mdx/` - MDX configuration
+
+## Key File Locations
+
+**Entry Points:**
+- `app/layout.tsx`: Root layout and providers
+- `app/page.tsx`: Homepage component
+- `app/(routes)/*/page.tsx`: Route pages
+
+**Configuration:**
+- `next.config.ts`: Next.js configuration
+- `tsconfig.json`: TypeScript configuration
+- `biome.json`: Linting configuration
+- `mdx-components.tsx`: MDX component settings
+
+**Core Logic:**
+- `components/layout/navigation.tsx`: Navigation component
+- `components/sections/`: Reusable section components
+- `lib/utils.ts`: Utility functions
+
+**Content:**
+- `content/case-studies/`: MDX content files
+
+## Naming Conventions
+
+**Files:**
+- PascalCase for components: `Navigation.tsx`, `Footer.tsx`
+- kebab-case for routes: `/case-studies`, `/about`
+- camelCase for utilities: `cn()`, `smoothScrollProvider`
+
+**Directories:**
+- kebab-case for directory names: `layout/`, `sections/`
+- Plural for component directories: `components/` not `component/`
+
+**Component Structure:**
+- Default exports for components
+- TypeScript FC interfaces
+- Barrel exports (`index.ts`) for cleaner imports
+
+## Where to Add New Code
+
+**New Page:**
+- Primary code: `app/(routes)/[route-name]/page.tsx`
+- Add navigation item: `components/layout/navigation.tsx`
+
+**New Component:**
+- Implementation: `components/[category]/[component-name].tsx`
+- Add to barrel export: `components/[category]/index.ts`
+
+**New Content:**
+- MDX file: `content/[category]/[slug].mdx`
+- Frontmatter with gray-matter metadata
+
+**New Utility:**
+- Implementation: `lib/[utility-name].ts`
+- Export from `lib/index.ts` if needed
+
+## Special Directories
+
+**app/(routes)/:**
+- Purpose: Route grouping to prevent conflicts
+- Generated: No
+- Committed: Yes
+
+**content/:**
+- Purpose: Content files separate from components
+- Generated: No
+- Committed: Yes
+- Processed: By gray-matter during build
+
+**.planning/codebase/:**
+- Purpose: Generated planning documents
+- Generated: Yes
+- Committed: No (generated by GSD)
+
+---
+
+*Structure analysis: 2026-02-10*
