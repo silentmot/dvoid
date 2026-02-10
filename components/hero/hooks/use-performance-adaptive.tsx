@@ -26,13 +26,13 @@ const COUNT_LIMITS = {
 	MAX_PARTICLES: 1000,
 	INCREMENT_NODES: 50,
 	INCREMENT_PARTICLES: 100,
-} as const;
+};
 
 const DEVICE_BASE_COUNTS = {
 	desktop: { nodes: 200, particles: 500 },
 	tablet: { nodes: 100, particles: 300 },
 	mobile: { nodes: 50, particles: 100 },
-} as const;
+};
 
 type DeviceTier = "mobile" | "tablet" | "desktop";
 
@@ -58,8 +58,8 @@ export function usePerformanceAdaptive(
 	// Pre-configured PerformanceMonitor component
 	const ConfiguredPerformanceMonitor: FC<PerformanceMonitorProps> = useMemo(
 		() =>
-			({ children, ...props }) =>
-				(
+			function MonitorWrapper({ children, ...props }: PerformanceMonitorProps) {
+				return (
 					<PerformanceMonitor
 						onIncline={() => {
 							setNodeCount((prev) =>
@@ -94,7 +94,8 @@ export function usePerformanceAdaptive(
 					>
 						{children}
 					</PerformanceMonitor>
-				),
+				);
+			},
 		[],
 	);
 

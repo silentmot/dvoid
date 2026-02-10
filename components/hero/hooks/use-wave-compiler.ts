@@ -38,8 +38,8 @@ const AUTO_PULSE_MAX = 5000; // ms
  */
 export function useWaveCompiler(): WaveCompiler {
 	const [waves, setWaves] = useState<Wave[]>([]);
-	const autoPulseTimeoutRef = useRef<NodeJS.Timeout>();
-	const updateIntervalRef = useRef<NodeJS.Timeout>();
+	const autoPulseTimeoutRef = useRef<NodeJS.Timeout | undefined>(undefined);
+	const updateIntervalRef = useRef<NodeJS.Timeout | undefined>(undefined);
 
 	// Add a new wave at position
 	const addWave = (position: THREE.Vector2) => {
