@@ -9,7 +9,7 @@ interface SocialLink {
 
 const SOCIAL_LINKS: SocialLink[] = [
 	{
-		href: "https://github.com/dvoid",
+		href: "https://github.com/silentmot",
 		label: "GitHub",
 		icon: (
 			<svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -18,7 +18,7 @@ const SOCIAL_LINKS: SocialLink[] = [
 		),
 	},
 	{
-		href: "https://linkedin.com/in/dvoid",
+		href: "https://linkedin.com/in/mtayeb9092",
 		label: "LinkedIn",
 		icon: (
 			<svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -27,7 +27,7 @@ const SOCIAL_LINKS: SocialLink[] = [
 		),
 	},
 	{
-		href: "mailto:contact@d-void.com",
+		href: "mailto:dev@dvoid.app",
 		label: "Email",
 		icon: (
 			<svg
