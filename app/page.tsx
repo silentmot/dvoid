@@ -1,6 +1,6 @@
+import RealityCompilerHeroClient from "@/components/hero/reality-compiler-hero.client";
 import EcoopsOverview from "@/components/sections/ecoops-overview";
 import SwmsOverview from "@/components/sections/swms-overview";
-import RealityCompilerHeroClient from "@/components/hero/reality-compiler-hero.client";
 
 export default function HomePage() {
 	return (
