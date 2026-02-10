@@ -1,17 +1,12 @@
-import dynamic from "next/dynamic";
 import EcoopsOverview from "@/components/sections/ecoops-overview";
 import SwmsOverview from "@/components/sections/swms-overview";
-
-const RealityCompilerHero = dynamic(
-	() => import("@/components/hero/reality-compiler-hero"),
-	{ ssr: false },
-);
+import RealityCompilerHeroClient from "@/components/hero/reality-compiler-hero.client";
 
 export default function HomePage() {
 	return (
 		<>
 			{/* Hero Section */}
-			<RealityCompilerHero
+			<RealityCompilerHeroClient
 				title="D-VOID"
 				subtitle="Technical Operations Specialist"
 				tagline="Compiling industrial systems into operational reality"
