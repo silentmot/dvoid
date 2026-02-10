@@ -116,7 +116,7 @@ const EcoopsOverview: FC = () => {
 							ecoops.d-void.com
 						</span>
 					</div>
-					<div className="aspect-video bg-gradient-to-br from-muted to-muted/50 flex items-center justify-center">
+					<div className="aspect-video bg-linear-to-br from-muted to-muted/50 flex items-center justify-center">
 						<div className="text-center">
 							<div className="w-16 h-16 mx-auto mb-4 rounded-lg bg-primary/10 flex items-center justify-center">
 								<svg
