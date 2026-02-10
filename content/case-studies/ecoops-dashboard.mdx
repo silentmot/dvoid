@@ -1,0 +1,89 @@
+---
+title: EcoOps Dashboard
+description: Operational command center providing real-time visibility into recycling facility operations.
+date: 2024-06-01
+tags:
+  - Next.js
+  - WebSocket
+  - Analytics
+  - PWA
+  - Dashboard
+featured: true
+client: Internal Project
+role: Full Stack Developer
+duration: 6 months
+stack:
+  - Next.js
+  - TypeScript
+  - Prisma
+  - PostgreSQL
+  - WebSocket
+  - Chart.js
+  - Tailwind CSS
+---
+
+## Problem
+
+Operations managers lacked real-time visibility into facility performance. Reports were generated manually using Excel exports, delivered with significant delays that made proactive decision-making impossible.
+
+Key pain points included:
+
+- No real-time fleet tracking
+- Manual inventory reconciliation
+- Delayed KPI reporting
+- No mobile access for field supervisors
+
+## Scope
+
+Build a real-time operational dashboard with four core modules:
+
+1. **Fleet Management**: Vehicle tracking, route optimization, driver assignment
+2. **Inventory Control**: Material stock levels, automated reorder points
+3. **Operational Analytics**: KPI dashboards, throughput metrics
+4. **Scheduling Engine**: Shift management, resource allocation
+
+Requirements:
+
+- Support multiple user roles (Admin, Manager, Operator, Viewer)
+- Work offline for field use
+- Export capabilities for stakeholder reporting
+- Mobile-responsive design
+
+## Architecture
+
+### Frontend (Next.js App Router)
+
+Server components for initial data load with client-side WebSocket connections for real-time updates. Role-based access control enforced at both route and component levels.
+
+```
+app/
+├── (dashboard)/
+│   ├── fleet/
+│   ├── inventory/
+│   ├── analytics/
+│   └── scheduling/
+├── api/
+│   └── [[...route]]/
+└── layout.tsx
+```
+
+### Real-time Layer
+
+WebSocket server (Hono) handling bi-directional communication. Updates pushed on:
+
+- Vehicle location changes
+- Inventory level updates
+- Workflow state transitions
+- Alert notifications
+
+### PWA Support
+
+Service worker for offline data caching. IndexedDB for storing pending mutations when offline.
+
+## Results
+
+- Real-time KPI visibility across all facility operations
+- Reduced report generation time from hours to seconds
+- Mobile-friendly interface for field operations
+- Export capabilities for stakeholder reporting
+- Offline support with automatic sync on reconnection

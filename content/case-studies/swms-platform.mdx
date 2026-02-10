@@ -1,0 +1,83 @@
+---
+title: SWMS Platform
+description: Smart Waste Management System automating C&D recycling facility operations through 4-stage workflow orchestration.
+date: 2021-01-01
+tags:
+  - Industrial IoT
+  - NestJS
+  - PostgreSQL
+  - Real-time
+  - Hardware Integration
+featured: true
+client: Saudi Waste Management Company
+role: Technical Operations Specialist
+duration: 4 years (ongoing)
+stack:
+  - NestJS
+  - Next.js
+  - PostgreSQL
+  - Prisma
+  - Redis
+  - Docker
+  - ZKTeco SDK
+  - Hikvision API
+  - Mettler Toledo DDE
+---
+
+## Problem
+
+Manual tracking of waste trucks through recycling facilities led to inconsistent data, unauthorized access, and inaccurate weight measurements. The facility needed a unified system to manage gate access, weighbridge operations, and material processing.
+
+Operators relied on paper-based logs and disconnected software systems. Weight discrepancies were common, and there was no real-time visibility into facility throughput.
+
+## Scope
+
+Design and implement a 4-stage workflow orchestration system integrating:
+
+- **Gate Entry**: ZKTeco access control with ANPR camera integration
+- **Weighbridge In**: Mettler Toledo scale integration for tare weight capture
+- **Processing**: Material classification and sorting operations
+- **Weighbridge Out**: Net weight calculation and automated ticketing
+
+The system must handle 24/7 operations with minimal downtime and support offline fallback modes.
+
+## Architecture
+
+### Backend (NestJS)
+
+Domain-Driven Design with event-sourced workflow states. Each stage transition is recorded as an immutable event, enabling full audit trails and state reconstruction.
+
+```
+src/
+├── modules/
+│   ├── gate/
+│   ├── weighbridge/
+│   ├── processing/
+│   └── ticketing/
+├── infrastructure/
+│   ├── hardware/
+│   │   ├── zkteco/
+│   │   ├── hikvision/
+│   │   └── mettler-toledo/
+│   └── persistence/
+└── shared/
+    └── domain/
+```
+
+### Hardware Integration
+
+- **ZKTeco**: TCP socket connection for real-time access events
+- **Hikvision**: ISAPI HTTP calls for ANPR plate recognition
+- **Mettler Toledo**: DDE protocol for scale weight readings
+
+### Real-time Updates
+
+Redis pub/sub for broadcasting workflow state changes to connected clients. WebSocket connections maintain live dashboard updates.
+
+## Results
+
+- Automated processing of trucks through all 4 stages
+- Eliminated manual data entry errors
+- Real-time visibility into facility operations
+- Integration with 3 hardware vendor ecosystems
+- 99.5% uptime over 4 years of operation
