@@ -73,11 +73,11 @@ The hero's 3D flashlight metaphor must work flawlessly—this is the primary dif
 ## Key Decisions
 
 | Decision | Rationale | Outcome |
-|----------|-----------|---------|
+| ---------- | --------- | -------- |
 | Dark-only theme | Consistent with premium aesthetic, reduces implementation complexity | — Pending |
 | MDX for content | Easy content editing, component embedding, version control | — Pending |
 | Static generation | Fast loading, simple deployment, no server costs | — Pending |
 | GSAP for pinned sections | Proven scroll-driven animation, smooth pinning behavior | — Pending |
 
 ---
-*Last updated: 2026-02-10 after initialization*
+>*Last updated: 2026-02-10 after initialization*

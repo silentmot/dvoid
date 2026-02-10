@@ -1,8 +1,8 @@
 # D-VOID Developer Portfolio - Technical Handoff
 
-**Domain:** d-void.com  
-**Owner:** DvoiD - Technical Operations Specialist  
-**Date:** 2026-02-10  
+**Domain:** d-void.com
+**Owner:** DvoiD - Technical Operations Specialist
+**Date:** 2026-02-10
 **Status:** Specification Complete - Ready for Implementation
 
 ---
@@ -49,7 +49,7 @@ Apple-minimal aesthetic with premium feel. Dark theme only. Soft glass surfaces.
 ### Core Framework
 
 | Layer | Technology | Version | Rationale |
-|-------|------------|---------|-----------|
+| ------- | ------------ | --------- | ----------- |
 | Framework | Next.js (App Router) | 15.x | Existing expertise, MDX support, ISR, R3F compatibility |
 | Runtime | Bun | Latest | Performance, native TypeScript |
 | Language | TypeScript | 5.x | Strict mode enabled |
@@ -59,7 +59,7 @@ Apple-minimal aesthetic with premium feel. Dark theme only. Soft glass surfaces.
 ### Animation Layer
 
 | Purpose | Library | Notes |
-|---------|---------|-------|
+| --------- | --------- | ------- |
 | Component animations | Motion (framer-motion) | Enter/exit, layout animations |
 | Scroll effects | GSAP ScrollTrigger | Pinned sections, scroll-driven transforms |
 | Smooth scroll | Lenis | Global scroll smoothing |
@@ -68,7 +68,7 @@ Apple-minimal aesthetic with premium feel. Dark theme only. Soft glass surfaces.
 ### Content Management
 
 | Type | Approach |
-|------|----------|
+| ------ | ---------- |
 | Projects | MDX files with frontmatter |
 | Case Studies | MDX files with component embedding |
 | Static pages | TSX components |
@@ -76,7 +76,7 @@ Apple-minimal aesthetic with premium feel. Dark theme only. Soft glass surfaces.
 ### External Services
 
 | Service | Purpose | Provider |
-|---------|---------|----------|
+| --------- | --------- | ---------- |
 | Analytics | Privacy-friendly tracking | Plausible or Umami |
 | Forms | Contact form processing | Formspree |
 | Deployment | Hosting + CI/CD | Vercel |
@@ -84,7 +84,7 @@ Apple-minimal aesthetic with premium feel. Dark theme only. Soft glass surfaces.
 ### Development Tools
 
 | Tool | Purpose |
-|------|---------|
+| ------ | --------- |
 | Biome | Linting + formatting (single tool, faster than ESLint+Prettier) |
 | TypeScript | Strict mode, no implicit any |
 | Vitest | Unit testing |
@@ -103,12 +103,12 @@ Apple-minimal aesthetic with premium feel. Dark theme only. Soft glass surfaces.
   --bg-secondary: #0a0a0a;
   --bg-tertiary: #111111;
   --bg-elevated: #1a1a1a;
-  
+
   /* Glass surfaces */
   --glass-bg: rgba(255, 255, 255, 0.03);
   --glass-border: rgba(255, 255, 255, 0.08);
   --glass-hover: rgba(255, 255, 255, 0.06);
-  
+
   /* Teal accent spectrum */
   --accent-50: #f0fdfa;
   --accent-100: #ccfbf1;
@@ -121,19 +121,19 @@ Apple-minimal aesthetic with premium feel. Dark theme only. Soft glass surfaces.
   --accent-800: #115e59;
   --accent-900: #134e4a;
   --accent-950: #0d4f4f;  /* Deep teal for gradients */
-  
+
   /* Text */
   --text-primary: #ffffff;
   --text-secondary: rgba(255, 255, 255, 0.7);
   --text-tertiary: rgba(255, 255, 255, 0.5);
   --text-muted: rgba(255, 255, 255, 0.3);
-  
+
   /* Shader colors (3D hero) */
   --shader-wireframe: rgb(0, 217, 166);  /* Matrix green-teal */
   --shader-rendered-a: #0d4f4f;
   --shader-rendered-b: #14b8a6;
   --shader-ring: rgba(255, 255, 255, 0.9);
-  
+
   /* Semantic */
   --success: #22c55e;
   --warning: #eab308;
@@ -148,7 +148,7 @@ Apple-minimal aesthetic with premium feel. Dark theme only. Soft glass surfaces.
   /* Font families */
   --font-sans: 'Geist', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'Geist Mono', 'JetBrains Mono', 'Fira Code', monospace;
-  
+
   /* Font sizes (rem) */
   --text-xs: 0.75rem;     /* 12px */
   --text-sm: 0.875rem;    /* 14px */
@@ -163,14 +163,14 @@ Apple-minimal aesthetic with premium feel. Dark theme only. Soft glass surfaces.
   --text-7xl: 4.5rem;     /* 72px */
   --text-8xl: 6rem;       /* 96px */
   --text-9xl: 8rem;       /* 128px */
-  
+
   /* Line heights */
   --leading-none: 1;
   --leading-tight: 1.25;
   --leading-snug: 1.375;
   --leading-normal: 1.5;
   --leading-relaxed: 1.625;
-  
+
   /* Letter spacing */
   --tracking-tighter: -0.05em;
   --tracking-tight: -0.025em;
@@ -184,7 +184,7 @@ Apple-minimal aesthetic with premium feel. Dark theme only. Soft glass surfaces.
 ### Typography Usage
 
 | Element | Font | Size | Weight | Tracking | Case |
-|---------|------|------|--------|----------|------|
+| --------- | ------ | ------ | -------- | ---------- | ------ |
 | Hero title | Sans | 8xl-9xl | 900 (Black) | tighter | Normal |
 | Section headings | Sans | 4xl-5xl | 700 | tight | Normal |
 | Subsection headings | Sans | 2xl-3xl | 600 | normal | Normal |
@@ -195,7 +195,7 @@ Apple-minimal aesthetic with premium feel. Dark theme only. Soft glass surfaces.
 
 ### Spacing Scale
 
-```
+```css
 4px, 8px, 12px, 16px, 24px, 32px, 48px, 64px, 96px, 128px, 192px
 ```
 
@@ -204,7 +204,7 @@ Standard Tailwind scale: `1, 2, 3, 4, 6, 8, 12, 16, 24, 32, 48`
 ### Border Radius
 
 | Token | Value | Usage |
-|-------|-------|-------|
+| ------- | ------- | ------- |
 | `--radius-sm` | 4px | Small buttons, tags |
 | `--radius-md` | 8px | Cards, inputs |
 | `--radius-lg` | 12px | Modals, large cards |
@@ -245,7 +245,7 @@ Standard Tailwind scale: `1, 2, 3, 4, 6, 8, 12, 16, 24, 32, 48`
 
 ### Page Structure
 
-```
+```lua
 /                     # Home (Hero + Featured + Tech Stack + Timeline)
 /about                # About (Bio + Philosophy + Background)
 /projects             # Projects listing (Grid/List view)
@@ -258,7 +258,7 @@ Standard Tailwind scale: `1, 2, 3, 4, 6, 8, 12, 16, 24, 32, 48`
 
 ### File Structure
 
-```
+```lua
 apps/web/
 ├── app/
 │   ├── layout.tsx              # Root layout with providers
@@ -331,7 +331,7 @@ apps/web/
 ### Routing Strategy
 
 | Route | Rendering | Revalidation |
-|-------|-----------|--------------|
+| ------- | ----------- | -------------- |
 | `/` | Static | On deploy |
 | `/about` | Static | On deploy |
 | `/projects` | Static | On deploy |
@@ -367,7 +367,7 @@ interface RealityCompilerHeroProps {
 #### Behavior Matrix
 
 | Condition | 3D Canvas | Fallback | Animations |
-|-----------|-----------|----------|------------|
+| ----------- | ----------- | ---------- | ------------ |
 | Desktop + Motion OK | Active | Hidden | Full |
 | Desktop + Reduced Motion | Hidden | Visible | Disabled |
 | Mobile (< 768px) | Hidden | Visible | Reduced |
@@ -377,7 +377,7 @@ interface RealityCompilerHeroProps {
 #### Shader Uniforms
 
 | Uniform | Type | Description |
-|---------|------|-------------|
+| --------- | ------ | ------------- |
 | `uTime` | float | Elapsed time for animation |
 | `uMouse` | vec2 | Normalized mouse position (0-1) |
 | `uResolution` | vec2 | Viewport dimensions |
@@ -388,7 +388,7 @@ interface RealityCompilerHeroProps {
 #### Geometry Configuration
 
 | Object | Geometry | Position | Rotation Speed |
-|--------|----------|----------|----------------|
+| -------- | ---------- | ---------- | ---------------- |
 | Centerpiece | TorusKnot(1, 0.35, 100, 24) | [0, 0, 0] | 1.0x |
 | Satellite 1 | Icosahedron(1.2, 1) | [-3.5, 2.5, -2] | 0.7x |
 | Satellite 2 | Octahedron(1.0, 0) | [4, -1.5, -3] | 0.5x |
@@ -398,6 +398,7 @@ interface RealityCompilerHeroProps {
 #### Static Fallback
 
 CSS-only fallback with:
+
 - Radial gradient simulating depth
 - Grid overlay with teal lines at 40px spacing
 - No JavaScript required
@@ -493,7 +494,7 @@ interface EcoOpsStorySection {
 #### Animation Behavior
 
 | Scroll Position | Visual State |
-|-----------------|--------------|
+| ----------------- | -------------- |
 | Before section | Hidden below viewport |
 | Enter trigger (top of section) | Pin begins, fade in |
 | 0-25% through | Stage 1 / Feature 1 visible |
@@ -520,6 +521,7 @@ const pinnedSectionConfig = {
 ### 5.3 Navigation
 
 **Behavior:**
+
 - Fixed position, top of viewport
 - Glass effect background
 - Visible on scroll up, hidden on scroll down
@@ -528,7 +530,7 @@ const pinnedSectionConfig = {
 **Links:**
 
 | Label | Route | Active Detection |
-|-------|-------|------------------|
+| ------- | ------- | ------------------ |
 | Home | `/` | Exact match |
 | About | `/about` | Starts with |
 | Projects | `/projects` | Starts with |
@@ -552,6 +554,7 @@ interface ProjectCardProps {
 ```
 
 **Layout:**
+
 - Aspect ratio: 16:9
 - Glass surface on hover
 - Tags rendered as pills with mono font
@@ -610,7 +613,7 @@ interface ProjectCardProps {
 ### 6.1 Homepage Sections
 
 | Section | Content Needed | Priority |
-|---------|----------------|----------|
+| --------- | ---------------- | ---------- |
 | Hero | Title, subtitle, tagline | Required |
 | Featured Project | SWMS summary, image, link | Required |
 | Tech Stack | Icon + name for each technology | Required |
@@ -620,7 +623,7 @@ interface ProjectCardProps {
 ### 6.2 About Page
 
 | Section | Content Needed |
-|---------|----------------|
+| --------- | ---------------- |
 | Bio | 2-3 paragraphs about background and expertise |
 | Philosophy | Development principles, DDD approach |
 | Current focus | SWMS, EcoOps, industrial IoT |
@@ -670,7 +673,7 @@ metrics:
 ### 6.5 Uses Page Structure
 
 | Category | Items Needed |
-|----------|--------------|
+| ---------- | -------------- |
 | Editor & Terminal | VS Code, Windows Terminal, PowerShell |
 | Development | Node.js, Bun, Docker, Git |
 | Database | PostgreSQL, Redis, Prisma |
@@ -684,7 +687,7 @@ metrics:
 ### Budgets
 
 | Metric | Budget | Measurement |
-|--------|--------|-------------|
+| -------- | -------- | ------------- |
 | First Contentful Paint | < 1.2s | Lighthouse |
 | Largest Contentful Paint | < 2.5s | Lighthouse |
 | Total Blocking Time | < 200ms | Lighthouse |
@@ -696,7 +699,7 @@ metrics:
 ### Optimization Strategies
 
 | Strategy | Implementation |
-|----------|----------------|
+| ---------- | ---------------- |
 | Code splitting | Dynamic imports for 3D, per-route chunks |
 | Image optimization | Next.js Image component, WebP/AVIF |
 | Font optimization | `next/font` with subset, swap display |
@@ -706,7 +709,7 @@ metrics:
 ### 3D-Specific Optimizations
 
 | Optimization | Value |
-|--------------|-------|
+| -------------- | ------- |
 | Device Pixel Ratio | `dpr={[1, 1.5]}` |
 | Antialias | `true` |
 | Power Preference | `"high-performance"` |
@@ -721,7 +724,7 @@ metrics:
 ### WCAG 2.1 AA Compliance
 
 | Requirement | Implementation |
-|-------------|----------------|
+| ------------- | ---------------- |
 | Color contrast | 4.5:1 minimum for text |
 | Focus indicators | Visible focus ring on all interactive elements |
 | Keyboard navigation | Full site navigable via keyboard |
@@ -732,7 +735,7 @@ metrics:
 ### Reduced Motion Behavior
 
 | Component | Full Motion | Reduced Motion |
-|-----------|-------------|----------------|
+| ----------- | ------------- | ---------------- |
 | Hero 3D | Active with animations | Static CSS fallback |
 | Page transitions | Crossfade | Instant |
 | Scroll animations | GSAP-driven | Instant state |
@@ -771,7 +774,7 @@ metrics:
 ### Environment Variables
 
 | Variable | Purpose | Required |
-|----------|---------|----------|
+| ---------- | --------- | ---------- |
 | `NEXT_PUBLIC_SITE_URL` | Canonical URL | Yes |
 | `NEXT_PUBLIC_PLAUSIBLE_DOMAIN` | Analytics domain | No |
 | `FORMSPREE_ENDPOINT` | Contact form | Yes |
@@ -802,7 +805,7 @@ const headers = [
 ### SEO Configuration
 
 | Page | Title Pattern | Description |
-|------|---------------|-------------|
+| ------ | --------------- | ------------- |
 | Home | "D-VOID - Technical Operations Specialist" | Full tagline |
 | About | "About - D-VOID" | Bio summary |
 | Projects | "Projects - D-VOID" | Projects overview |
@@ -907,6 +910,7 @@ const defaultOG = {
 Full implementation available at: `D:\RealityCompilerHero.tsx`
 
 Key technical details:
+
 - Single-file React component with R3F
 - Custom GLSL fragment shader for flashlight effect
 - Procedural grid with scanlines and data flow particles
@@ -921,7 +925,7 @@ Key technical details:
 ### Hard "No" List
 
 | Item | Reason |
-|------|--------|
+| ------ | -------- |
 | Heavy glow/bloom | Appears cheap, hurts readability |
 | Neon colors | Conflicts with premium teal palette |
 | Autoplay audio | User experience violation |
@@ -936,7 +940,7 @@ Key technical details:
 ### Future Considerations (Not in Scope)
 
 | Feature | Notes |
-|---------|-------|
+| --------- | ------- |
 | Blog | Add when ready to write regularly |
 | Newsletter | Add with blog |
 | i18n (AR/EN) | Significant effort, post-launch |
@@ -949,21 +953,21 @@ Key technical details:
 ## Appendix C: Reference Links
 
 | Resource | URL |
-|----------|-----|
-| Next.js Docs | https://nextjs.org/docs |
-| React Three Fiber | https://docs.pmnd.rs/react-three-fiber |
-| drei (R3F helpers) | https://github.com/pmndrs/drei |
-| GSAP ScrollTrigger | https://gsap.com/docs/v3/Plugins/ScrollTrigger |
-| Lenis | https://github.com/darkroomengineering/lenis |
-| shadcn/ui | https://ui.shadcn.com |
-| Tailwind CSS 4 | https://tailwindcss.com/docs |
-| Geist Font | https://vercel.com/font |
-| Formspree | https://formspree.io |
-| Plausible Analytics | https://plausible.io |
+| ---------- | ----- |
+| Next.js Docs | <https://nextjs.org/docs> |
+| React Three Fiber | <https://docs.pmnd.rs/react-three-fiber> |
+| drei (R3F helpers) | <https://github.com/pmndrs/drei> |
+| GSAP ScrollTrigger | <https://gsap.com/docs/v3/Plugins/ScrollTrigger> |
+| Lenis | <https://github.com/darkroomengineering/lenis> |
+| shadcn/ui | <https://ui.shadcn.com> |
+| Tailwind CSS 4 | <https://tailwindcss.com/docs> |
+| Geist Font | <https://vercel.com/font> |
+| Formspree | <https://formspree.io> |
+| Plausible Analytics | <https://plausible.io> |
 
 ---
 
-**Document Version:** 1.0  
-**Last Updated:** 2026-02-10  
-**Author:** Claude (Anthropic)  
+**Document Version:** 1.0
+**Last Updated:** 2026-02-10
+**Author:** Claude (Anthropic)
 **Prepared For:** DvoiD
