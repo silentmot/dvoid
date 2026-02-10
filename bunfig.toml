@@ -1,0 +1,44 @@
+[install]
+
+# whether to install optionalDependencies
+optional = true
+
+# whether to install devDependencies
+dev = true
+
+# whether to install peerDependencies
+peer = true
+
+# equivalent to `--production` flag
+production = false
+
+# CRITICAL FIX: Set this to true.
+# Creates a 'bun.lock' text file alongside 'bun.lockb'.
+# This prevents the "install twice" issue by providing a reliable source of truth
+# for dependency resolution and making git merges of lockfiles safer.
+saveTextLockfile = true
+
+# equivalent to `--frozen-lockfile` flag
+# Keep false for development so you can update packages
+frozenLockfile = false
+
+# equivalent to `--dry-run` flag
+dryRun = false
+
+# installation strategy: "hoisted" or "isolated"
+# Keep this "hoisted" for Next.js.
+# "isolated" can break Next.js because it might load multiple instances of React.
+linker = "hoisted"
+
+# Global cache configuration
+# If you still have issues, run: bun pm cache rm
+[install.cache]
+# the directory to use for the cache
+dir = ".bun/install/cache"
+
+# when true, don't load from the global cache.
+# Bun may still write to node_modules/.cache
+disable = false
+
+# when true, always resolve the latest versions from the registry
+disableManifest = false
