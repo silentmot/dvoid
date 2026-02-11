@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { EcoOpsLogo } from "@/components/ecoops/ecoops-logo";
 
 export const metadata: Metadata = {
 	title: "Case Studies",
@@ -15,9 +16,9 @@ interface CaseStudy {
 	duration: string;
 	role: string;
 	tags: string[];
+	mediaComponent?: "ecoops-logo" | null;
 }
 
-// Placeholder data - replace with MDX content loader
 const CASE_STUDIES: CaseStudy[] = [
 	{
 		slug: "swms-platform",
@@ -28,18 +29,44 @@ const CASE_STUDIES: CaseStudy[] = [
 		duration: "4 years (ongoing)",
 		role: "Technical Operations Specialist",
 		tags: ["Industrial IoT", "NestJS", "PostgreSQL", "Real-time"],
+		mediaComponent: null,
 	},
 	{
 		slug: "ecoops-dashboard",
 		title: "EcoOps Dashboard",
 		description:
-			"Building an operational command center with real-time monitoring and analytics.",
-		client: "Internal Project",
-		duration: "6 months",
+			"C&D Recycling Facility Operations Management System transforming manual Excel workflows into a scalable web platform.",
+		client: "Sustainability Solutions Company",
+		duration: "8 months",
 		role: "Full Stack Developer",
-		tags: ["Next.js", "WebSocket", "Analytics", "PWA"],
+		tags: ["Next.js 16", "Hono RPC", "Prisma", "Better Auth"],
+		mediaComponent: "ecoops-logo",
 	},
 ];
+
+function CaseStudyMedia({ study, index }: { study: CaseStudy; index: number }) {
+	if (study.mediaComponent === "ecoops-logo") {
+		return (
+			<div className="md:w-1/3 aspect-video rounded-md bg-gradient-to-br from-emerald-950/50 to-slate-900/80 flex items-center justify-center shrink-0 overflow-hidden border border-emerald-900/30">
+				<EcoOpsLogo
+					height={80}
+					variant="full"
+					animated={true}
+					animationSpeed={0.6}
+					enableGlow={true}
+				/>
+			</div>
+		);
+	}
+
+	return (
+		<div className="md:w-1/3 aspect-video rounded-md bg-muted/50 flex items-center justify-center shrink-0">
+			<span className="text-4xl font-bold text-muted-foreground/30">
+				{String(index + 1).padStart(2, "0")}
+			</span>
+		</div>
+	);
+}
 
 export default function CaseStudiesPage() {
 	return (
@@ -69,11 +96,7 @@ export default function CaseStudiesPage() {
 						>
 							<div className="flex flex-col md:flex-row gap-8">
 								{/* Preview */}
-								<div className="md:w-1/3 aspect-video rounded-md bg-muted/50 flex items-center justify-center shrink-0">
-									<span className="text-4xl font-bold text-muted-foreground/30">
-										{String(index + 1).padStart(2, "0")}
-									</span>
-								</div>
+								<CaseStudyMedia study={study} index={index} />
 
 								{/* Content */}
 								<div className="flex-1">

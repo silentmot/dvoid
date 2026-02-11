@@ -1,4 +1,4 @@
-# D-VOID
+# DvoiD
 
 **Technical Operations Specialist** -- [d-void.com](https://d-void.com)
 

@@ -18,8 +18,8 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
 	metadataBase: new URL("https://d-void.com"),
 	title: {
-		default: "D-VOID | Technical Operations Specialist",
-		template: "%s | D-VOID",
+		default: "DvoiD | Technical Operations Specialist",
+		template: "%s | DvoiD",
 	},
 	description:
 		"Technical Operations Specialist in industrial IoT systems. Architecting smart waste management solutions through modern web technologies.",
@@ -32,14 +32,14 @@ export const metadata: Metadata = {
 		"Full Stack Developer",
 		"Backend Developer",
 	],
-	authors: [{ name: "D-VOID" }],
-	creator: "D-VOID",
+	authors: [{ name: "DvoiD" }],
+	creator: "DvoiD",
 	openGraph: {
 		type: "website",
 		locale: "en_US",
 		url: "https://d-void.com",
-		siteName: "D-VOID",
-		title: "D-VOID | Technical Operations Specialist",
+		siteName: "DvoiD",
+		title: "DvoiD | Technical Operations Specialist",
 		description:
 			"Technical Operations Specialist in industrial IoT systems. Architecting smart waste management solutions.",
 		images: [
@@ -47,13 +47,13 @@ export const metadata: Metadata = {
 				url: "/og-image.png",
 				width: 1200,
 				height: 630,
-				alt: "D-VOID Portfolio",
+				alt: "DvoiD Portfolio",
 			},
 		],
 	},
 	twitter: {
 		card: "summary_large_image",
-		title: "D-VOID | Technical Operations Specialist",
+		title: "DvoiD | Technical Operations Specialist",
 		description: "Technical Operations Specialist in industrial IoT systems.",
 		images: ["/og-image.png"],
 	},

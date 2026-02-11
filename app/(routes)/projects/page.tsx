@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { EcoOpsLogo } from "@/components/ecoops/ecoops-logo";
 
 export const metadata: Metadata = {
 	title: "Projects",
@@ -13,9 +14,9 @@ interface Project {
 	description: string;
 	tags: string[];
 	featured: boolean;
+	previewComponent?: "ecoops-logo" | null;
 }
 
-// Placeholder data - replace with MDX content loader
 const PROJECTS: Project[] = [
 	{
 		slug: "swms-platform",
@@ -24,14 +25,16 @@ const PROJECTS: Project[] = [
 			"Smart Waste Management System automating C&D recycling facility operations through 4-stage workflow orchestration.",
 		tags: ["NestJS", "Next.js", "PostgreSQL", "Industrial IoT"],
 		featured: true,
+		previewComponent: null,
 	},
 	{
 		slug: "ecoops-dashboard",
 		title: "EcoOps Dashboard",
 		description:
-			"Operational command center providing real-time visibility into recycling facility operations.",
-		tags: ["Next.js", "WebSocket", "Prisma", "Charts"],
+			"C&D Recycling Facility Operations Management System transforming manual Excel workflows into a modular web platform with Hono RPC endpoints, three-tier RBAC, and automated inventory calculations.",
+		tags: ["Next.js 16", "Hono RPC", "Prisma", "Better Auth", "React Query"],
 		featured: true,
+		previewComponent: "ecoops-logo",
 	},
 	{
 		slug: "deskops",
@@ -40,8 +43,35 @@ const PROJECTS: Project[] = [
 			"Desktop automation system for file organization with lifecycle-based processing.",
 		tags: ["Automation", "PowerShell", "Node.js"],
 		featured: false,
+		previewComponent: null,
 	},
 ];
+
+function ProjectPreview({
+	project,
+}: {
+	project: Project;
+}) {
+	if (project.previewComponent === "ecoops-logo") {
+		return (
+			<div className="aspect-video mb-4 rounded-md bg-gradient-to-br from-purple-950/40 via-blue-950/30 to-teal-950/40 border border-purple-900/20 flex items-center justify-center overflow-hidden">
+				<EcoOpsLogo
+					height={60}
+					variant="full"
+					animated={true}
+					animationSpeed={0.6}
+					enableGlow={true}
+				/>
+			</div>
+		);
+	}
+
+	return (
+		<div className="aspect-video mb-4 rounded-md bg-muted/50 flex items-center justify-center">
+			<span className="text-sm text-muted-foreground">Preview</span>
+		</div>
+	);
+}
 
 export default function ProjectsPage() {
 	const featuredProjects = PROJECTS.filter((p) => p.featured);
@@ -77,11 +107,7 @@ export default function ProjectsPage() {
 									href={`/case-studies/${project.slug}`}
 									className="group block p-6 rounded-lg bg-card border border-border/50 hover:border-primary/30 transition-all"
 								>
-									<div className="aspect-video mb-4 rounded-md bg-muted/50 flex items-center justify-center">
-										<span className="text-sm text-muted-foreground">
-											Preview
-										</span>
-									</div>
+									<ProjectPreview project={project} />
 									<h3 className="text-xl font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
 										{project.title}
 									</h3>

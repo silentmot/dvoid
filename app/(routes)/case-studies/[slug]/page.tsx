@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { EcoOpsLogo } from "@/components/ecoops/ecoops-logo";
+import { ModuleArchitectureDiagram } from "@/components/ecoops/module-architecture-diagram";
 
-// Placeholder case study data - replace with MDX loader
 const CASE_STUDIES: Record<
 	string,
 	{
@@ -17,6 +18,10 @@ const CASE_STUDIES: Record<
 			scope: string;
 			architecture: string;
 			results: string;
+		};
+		features?: {
+			heroMedia?: "ecoops-logo";
+			architectureDiagram?: "module-architecture";
 		};
 	}
 > = {
@@ -52,28 +57,34 @@ const CASE_STUDIES: Record<
 	"ecoops-dashboard": {
 		title: "EcoOps Dashboard",
 		description:
-			"Operational command center providing real-time visibility into recycling facility operations.",
-		client: "Internal Project",
-		duration: "6 months",
+			"C&D Recycling Facility Operations Management System transforming manual Excel workflows into a scalable web platform.",
+		client: "Sustainability Solutions Company",
+		duration: "8 months",
 		role: "Full Stack Developer",
 		stack: [
-			"Next.js",
+			"Next.js 16",
 			"TypeScript",
+			"Hono RPC",
 			"Prisma",
 			"PostgreSQL",
-			"WebSocket",
-			"Chart.js",
-			"Tailwind CSS",
+			"Better Auth",
+			"React Query",
+			"Tailwind CSS v4",
+			"Recharts",
 		],
 		sections: {
 			problem:
-				"Operations managers lacked real-time visibility into facility performance. Reports were generated manually and delivered with significant delays, making proactive decision-making impossible.",
+				"Recycling facility operations relied entirely on manual Excel-based workflows. Daily production metrics, material dispatches, equipment utilization, and manpower attendance were tracked across disconnected spreadsheets with no centralized visibility, audit trail, or role-based access control.",
 			scope:
-				"Build a real-time dashboard with fleet management, inventory control, operational analytics, and scheduling capabilities. Must support multiple user roles and work offline.",
+				"Build a modular operations management platform digitizing the complete C&D recycling workflow. Core modules: Production, Dispatch, Received Materials, Equipment Utilization, Manpower Attendance, and automated Inventory calculations. Foundational modules: dynamic Site Management and three-tier RBAC User Management.",
 			architecture:
-				"Next.js App Router with server components for initial data load. WebSocket connections for real-time updates. Role-based access control with JWT. PWA capabilities for offline support.",
+				"Next.js 16 App Router with Hono RPC endpoints replacing traditional REST. React Query for client-side state with automatic cache invalidation. Better Auth for session-based authentication with module permissions, operation permissions, and user-specific overrides. Prisma ORM with PostgreSQL. Background job processing for bulk imports and multi-format exports.",
 			results:
-				"Real-time KPI visibility. Reduced report generation time from hours to seconds. Mobile-friendly interface for field operations. Export capabilities for stakeholder reporting.",
+				"Real-time operational visibility across all facility metrics. Dual data entry supporting web forms and bulk CSV/Excel import. Automated inventory calculations eliminating reconciliation errors. Complete audit trail for regulatory compliance. Role-based access control with site-level granularity.",
+		},
+		features: {
+			heroMedia: "ecoops-logo",
+			architectureDiagram: "module-architecture",
 		},
 	},
 };
@@ -100,6 +111,37 @@ export async function generateMetadata({
 
 export function generateStaticParams() {
 	return Object.keys(CASE_STUDIES).map((slug) => ({ slug }));
+}
+
+function HeroMedia({ feature }: { feature?: "ecoops-logo" }) {
+	if (feature === "ecoops-logo") {
+		return (
+			<div className="mb-12 p-8 rounded-lg bg-gradient-to-br from-emerald-950/40 to-slate-900/60 border border-emerald-900/20 flex items-center justify-center">
+				<EcoOpsLogo
+					height={120}
+					variant="full"
+					animated={true}
+					animationSpeed={0.5}
+					enableGlow={true}
+				/>
+			</div>
+		);
+	}
+	return null;
+}
+
+function ArchitectureDiagram({ feature }: { feature?: "module-architecture" }) {
+	if (feature === "module-architecture") {
+		return (
+			<div className="mt-8 p-6 rounded-lg bg-slate-900/50 border border-slate-800/50">
+				<p className="text-xs font-mono text-muted-foreground/60 uppercase tracking-wider mb-4">
+					Module Relationships
+				</p>
+				<ModuleArchitectureDiagram />
+			</div>
+		);
+	}
+	return null;
 }
 
 export default async function CaseStudyPage({ params }: PageProps) {
@@ -133,6 +175,9 @@ export default async function CaseStudyPage({ params }: PageProps) {
 					</svg>
 					Back to Case Studies
 				</Link>
+
+				{/* Hero Media */}
+				<HeroMedia feature={study.features?.heroMedia} />
 
 				{/* Header */}
 				<header className="mb-12">
@@ -196,6 +241,9 @@ export default async function CaseStudyPage({ params }: PageProps) {
 						<p className="text-muted-foreground leading-relaxed">
 							{study.sections.architecture}
 						</p>
+						<ArchitectureDiagram
+							feature={study.features?.architectureDiagram}
+						/>
 					</section>
 
 					<section>
