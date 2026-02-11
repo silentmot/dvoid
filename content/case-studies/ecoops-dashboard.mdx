@@ -1,89 +1,112 @@
 ---
 title: EcoOps Dashboard
-description: Operational command center providing real-time visibility into recycling facility operations.
+description: Construction & Demolition Recycling Facility Operations Management System transforming manual Excel workflows into a scalable web platform.
 date: 2024-06-01
 tags:
   - Next.js
-  - WebSocket
-  - Analytics
-  - PWA
-  - Dashboard
-featured: true
-client: Internal Project
-role: Full Stack Developer
-duration: 6 months
-stack:
-  - Next.js
-  - TypeScript
+  - Hono RPC
   - Prisma
   - PostgreSQL
-  - WebSocket
-  - Chart.js
-  - Tailwind CSS
+  - Better Auth
+  - React Query
+  - Dashboard
+featured: true
+client: Sustainability Solutions Company
+role: Full Stack Developer
+duration: 8 months
+stack:
+  - Next.js 16
+  - TypeScript
+  - Hono RPC
+  - Prisma
+  - PostgreSQL
+  - Better Auth
+  - React Query
+  - Tailwind CSS v4
+  - Recharts
 ---
 
 ## Problem
 
-Operations managers lacked real-time visibility into facility performance. Reports were generated manually using Excel exports, delivered with significant delays that made proactive decision-making impossible.
+Recycling facility operations relied entirely on manual Excel-based workflows. Daily production metrics, material dispatches, equipment utilization, and manpower attendance were tracked across disconnected spreadsheets with no centralized visibility.
 
-Key pain points included:
+Key operational gaps:
 
-- No real-time fleet tracking
-- Manual inventory reconciliation
-- Delayed KPI reporting
-- No mobile access for field supervisors
+- No real-time dashboard for facility performance
+- Manual inventory reconciliation prone to calculation errors
+- Delayed KPI reporting preventing proactive decision-making
+- No role-based access control for multi-site operations
+- Audit trail nonexistent for compliance requirements
 
-## Scope
+## Solution
 
-Build a real-time operational dashboard with four core modules:
+Build a modular operations management platform that digitizes the complete C&D recycling workflow from CDW intake through production to dispatch of saleable aggregates.
 
-1. **Fleet Management**: Vehicle tracking, route optimization, driver assignment
-2. **Inventory Control**: Material stock levels, automated reorder points
-3. **Operational Analytics**: KPI dashboards, throughput metrics
-4. **Scheduling Engine**: Shift management, resource allocation
+### Core Operational Modules
 
-Requirements:
+1. **Production Monitoring** — Daily crusher output metrics with material categorization
+2. **Dispatch Management** — Transaction records for material shipments to customers
+3. **Received Materials** — CDW intake logging with source tracking
+4. **Equipment Utilization** — Operational hours and count tracking by equipment type
+5. **Manpower Attendance** — Shift-based labor hours and headcount records
+6. **Inventory System** — Automated stock calculations from transaction data
 
-- Support multiple user roles (Admin, Manager, Operator, Viewer)
-- Work offline for field use
-- Export capabilities for stakeholder reporting
-- Mobile-responsive design
+### Foundational Modules
+
+1. **Site Management** — Dynamic multi-site architecture with per-site configuration
+2. **User Management** — Three-tier RBAC (module permissions, operation permissions, user overrides)
+3. **Dashboard Analytics** — Real-time KPIs with interactive visualizations
+4. **Export System** — Multi-format output (Excel, PDF, CSV) with background processing
+5. **Import System** — Bulk CSV/Excel upload with row-level validation and audit
 
 ## Architecture
 
-### Frontend (Next.js App Router)
+### API Layer (Hono RPC)
 
-Server components for initial data load with client-side WebSocket connections for real-time updates. Role-based access control enforced at both route and component levels.
+Type-safe RPC endpoints replacing traditional REST patterns. React Query hooks for client-side state management with automatic cache invalidation.
 
 ```
-app/
-├── (dashboard)/
-│   ├── fleet/
-│   ├── inventory/
-│   ├── analytics/
-│   └── scheduling/
-├── api/
-│   └── [[...route]]/
-└── layout.tsx
+app/api/[[...route]]/
+├── routes/
+│   ├── production.ts
+│   ├── dispatch.ts
+│   ├── received.ts
+│   ├── equipment.ts
+│   ├── manpower.ts
+│   ├── inventory.ts
+│   ├── dashboard.ts
+│   ├── sites.ts
+│   └── users.ts
+└── route.ts
 ```
 
-### Real-time Layer
+### Authentication (Better Auth)
 
-WebSocket server (Hono) handling bi-directional communication. Updates pushed on:
+Session-based authentication with role enforcement at route and component levels. Three role tiers with granular permissions:
 
-- Vehicle location changes
-- Inventory level updates
-- Workflow state transitions
-- Alert notifications
+- **Module Permissions** — Coarse-grained access (VIEW, INPUT, EXPORT, IMPORT per module)
+- **Operation Permissions** — Fine-grained actions within modules
+- **User Overrides** — Per-user exceptions to role defaults
 
-### PWA Support
+### Data Model
 
-Service worker for offline data caching. IndexedDB for storing pending mutations when offline.
+Automated inventory calculation eliminates manual stock entry:
+
+```
+closingStock = openingStock + production - dispatched
+```
+
+Transaction data flows through Production, Dispatch, and Received modules. System computes inventory snapshots automatically with full audit trail.
+
+### Multi-Site Operations
+
+Sites are database-managed entities, not hardcoded values. Each site maintains isolated operational data with aggregated views available to administrators. User access grants are site-specific with permission matrices.
 
 ## Results
 
-- Real-time KPI visibility across all facility operations
-- Reduced report generation time from hours to seconds
-- Mobile-friendly interface for field operations
-- Export capabilities for stakeholder reporting
-- Offline support with automatic sync on reconnection
+- Real-time operational visibility across all facility metrics
+- Dual data entry (web forms + bulk CSV/Excel import) for workflow flexibility
+- Automated inventory calculations eliminating reconciliation errors
+- Complete audit trail for regulatory compliance
+- Role-based access control with site-level granularity
+- Background job processing for exports and imports with progress tracking

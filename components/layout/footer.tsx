@@ -60,7 +60,7 @@ const Footer: FC = () => {
 							href="/"
 							className="text-lg font-bold tracking-tighter text-foreground"
 						>
-							D-VOID
+							DvoiD
 						</Link>
 						<p className="text-sm text-muted-foreground">
 							{currentYear} All rights reserved.

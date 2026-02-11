@@ -1,7 +1,7 @@
 "use client";
 
-import { PerformanceMonitor } from "@react-three/drei";
 import type { PerformanceMonitorProps } from "@react-three/drei";
+import { PerformanceMonitor } from "@react-three/drei";
 import { type FC, useMemo, useState } from "react";
 
 // ============================================================================

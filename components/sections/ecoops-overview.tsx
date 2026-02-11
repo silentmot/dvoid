@@ -4,6 +4,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from "next/link";
 import { type FC, useEffect, useRef } from "react";
+import { DashboardPreview } from "@/components/ecoops/dashboard-preview";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -15,36 +16,52 @@ interface DashboardModule {
 
 const DASHBOARD_MODULES: DashboardModule[] = [
 	{
-		id: "fleet",
-		title: "Fleet Management",
+		id: "production",
+		title: "Production Monitoring",
 		description:
-			"Real-time vehicle tracking, route optimization, driver assignment",
+			"Daily crusher output metrics with material categorization and target tracking",
+	},
+	{
+		id: "dispatch",
+		title: "Dispatch Management",
+		description:
+			"Transaction records for material shipments with customer and vehicle tracking",
 	},
 	{
 		id: "inventory",
-		title: "Inventory Control",
+		title: "Inventory System",
 		description:
-			"Material stock levels, automated reorder points, bin management",
+			"Automated stock calculations from transaction data with opening/closing reconciliation",
 	},
 	{
-		id: "analytics",
-		title: "Operational Analytics",
-		description: "KPI dashboards, throughput metrics, efficiency reporting",
+		id: "equipment",
+		title: "Equipment Utilization",
+		description:
+			"Operational hours and count tracking organized by equipment type classification",
 	},
 	{
-		id: "scheduling",
-		title: "Scheduling Engine",
-		description: "Shift management, resource allocation, capacity planning",
+		id: "manpower",
+		title: "Manpower Attendance",
+		description:
+			"Shift-based labor hours and headcount records with role categorization",
+	},
+	{
+		id: "sites",
+		title: "Multi-Site Operations",
+		description:
+			"Dynamic site management with per-site configuration and aggregated views",
 	},
 ];
 
 const FEATURES = [
-	"Real-time WebSocket updates",
-	"Role-based access control",
-	"Multi-tenant architecture",
-	"Offline-first PWA",
-	"Export to Excel/PDF",
-	"Custom report builder",
+	"Hono RPC with React Query",
+	"Three-tier RBAC system",
+	"Multi-site architecture",
+	"Dual data entry (forms + import)",
+	"Automated inventory calculation",
+	"Background job processing",
+	"Multi-format export system",
+	"Complete audit trail",
 ];
 
 const EcoopsOverview: FC = () => {
@@ -101,43 +118,22 @@ const EcoopsOverview: FC = () => {
 						EcoOps Dashboard
 					</h2>
 					<p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-						Operational command center providing real-time visibility into
-						recycling facility operations
+						C&D Recycling Facility Operations Management System transforming
+						manual Excel workflows into a scalable web platform
 					</p>
 				</div>
 
-				{/* Dashboard Preview Placeholder */}
+				{/* Dashboard Preview */}
 				<div className="mb-20 rounded-xl border border-border/50 bg-card overflow-hidden">
 					<div className="p-4 border-b border-border/50 flex items-center gap-2">
 						<div className="w-3 h-3 rounded-full bg-red-500/50" />
 						<div className="w-3 h-3 rounded-full bg-yellow-500/50" />
 						<div className="w-3 h-3 rounded-full bg-green-500/50" />
 						<span className="ml-4 text-sm text-muted-foreground font-mono">
-							ecoops.d-void.com
+							dvoid.app
 						</span>
 					</div>
-					<div className="aspect-video bg-linear-to-br from-muted to-muted/50 flex items-center justify-center">
-						<div className="text-center">
-							<div className="w-16 h-16 mx-auto mb-4 rounded-lg bg-primary/10 flex items-center justify-center">
-								<svg
-									className="w-8 h-8 text-primary"
-									fill="none"
-									stroke="currentColor"
-									viewBox="0 0 24 24"
-								>
-									<path
-										strokeLinecap="round"
-										strokeLinejoin="round"
-										strokeWidth={1.5}
-										d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2"
-									/>
-								</svg>
-							</div>
-							<p className="text-sm text-muted-foreground">
-								Dashboard preview placeholder
-							</p>
-						</div>
-					</div>
+					<DashboardPreview />
 				</div>
 
 				{/* Modules Grid */}
@@ -177,9 +173,9 @@ const EcoopsOverview: FC = () => {
 				{/* Features */}
 				<div className="mb-16">
 					<h3 className="text-2xl font-semibold text-foreground mb-8 text-center">
-						Platform Features
+						Platform Capabilities
 					</h3>
-					<div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+					<div className="grid grid-cols-2 md:grid-cols-4 gap-4">
 						{FEATURES.map((feature) => (
 							<div
 								key={feature}
