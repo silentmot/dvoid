@@ -4,7 +4,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from "next/link";
 import { type FC, useEffect, useRef } from "react";
-import { DashboardPreview } from "@/components/ecoops/dashboard-preview";
+import Image from "next/image";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -133,7 +133,21 @@ const EcoopsOverview: FC = () => {
 							dvoid.app
 						</span>
 					</div>
-					<DashboardPreview />
+					<a
+						href="https://dvoid.app"
+						target="_blank"
+						rel="noopener noreferrer"
+						className="block transition-opacity hover:opacity-90"
+					>
+						<Image
+							src="/assets/EcoOps-Operational.png"
+							alt="EcoOps Dashboard"
+							width={1920}
+							height={1080}
+							className="w-full h-auto"
+							priority
+						/>
+					</a>
 				</div>
 
 				{/* Modules Grid */}
