@@ -18,19 +18,19 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
 	metadataBase: new URL("https://d-void.com"),
 	title: {
-		default: "DvoiD | Technical Operations Specialist",
+		default: "DvoiD | System Architect",
 		template: "%s | DvoiD",
 	},
 	description:
-		"Technical Operations Specialist in industrial IoT systems. Architecting smart waste management solutions through modern web technologies.",
+		"System Architect specializing in industrial IoT integration. Designing event-driven platforms where device signals become operational truth.",
 	keywords: [
-		"Technical Operations",
+		"System Architect",
 		"Industrial IoT",
 		"Smart Waste Management",
-		"NestJS",
-		"Next.js",
-		"Full Stack Developer",
-		"Backend Developer",
+		".NET Core",
+		"Temporal.io",
+		"Event-Driven Architecture",
+		"Device Integration",
 	],
 	authors: [{ name: "DvoiD" }],
 	creator: "DvoiD",
@@ -39,9 +39,9 @@ export const metadata: Metadata = {
 		locale: "en_US",
 		url: "https://d-void.com",
 		siteName: "DvoiD",
-		title: "DvoiD | Technical Operations Specialist",
+		title: "DvoiD | System Architect",
 		description:
-			"Technical Operations Specialist in industrial IoT systems. Architecting smart waste management solutions.",
+			"System Architect specializing in industrial IoT integration. Where device signals become operational truth.",
 		images: [
 			{
 				url: "/og-image.png",
@@ -53,8 +53,8 @@ export const metadata: Metadata = {
 	},
 	twitter: {
 		card: "summary_large_image",
-		title: "DvoiD | Technical Operations Specialist",
-		description: "Technical Operations Specialist in industrial IoT systems.",
+		title: "DvoiD | System Architect",
+		description: "System Architect specializing in industrial IoT integration.",
 		images: ["/og-image.png"],
 	},
 	robots: {
