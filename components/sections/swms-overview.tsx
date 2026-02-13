@@ -109,8 +109,8 @@ const SwmsOverview: FC = () => {
 					</h2>
 					<p className="text-lg text-muted-foreground max-w-2xl mx-auto">
 						Event-driven waste management platform automating C&D recycling
-						operations through device orchestration and real-time trip
-						lifecycle management
+						operations through device orchestration and real-time trip lifecycle
+						management
 					</p>
 				</div>
 
