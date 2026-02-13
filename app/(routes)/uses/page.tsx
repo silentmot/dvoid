@@ -13,55 +13,102 @@ interface ToolCategory {
 
 const TOOL_CATEGORIES: ToolCategory[] = [
 	{
-		title: "Development",
+		title: "Development Environment",
 		items: [
-			{ name: "VS Code", description: "Primary editor with Vim keybindings" },
-			{
-				name: "Warp Terminal",
-				description: "Modern terminal with AI features",
-			},
-			{ name: "Bun", description: "JavaScript runtime and package manager" },
+			{ name: "VS Code", description: "Primary editor" },
+			{ name: "Visual Studio 2022", description: "C# / .NET development" },
+			{ name: "Windows Terminal", description: "Primary terminal emulator" },
+			{ name: "Git Bash", description: "Git operations and Unix commands" },
+			{ name: "WSL 2 (Ubuntu)", description: "Linux environment on Windows" },
+			{ name: "PowerToys", description: "Windows productivity utilities" },
 			{ name: "Docker Desktop", description: "Container management" },
-			{ name: "DBeaver", description: "Database management and queries" },
+			{
+				name: "DBeaver",
+				description: "Database management (PostgreSQL, MongoDB)",
+			},
 			{ name: "Postman", description: "API testing and documentation" },
+			{ name: "Chrome", description: "Primary browser (DevTools)" },
 		],
 	},
 	{
-		title: "Design",
+		title: "AI & Automation",
 		items: [
-			{ name: "Figma", description: "UI design and prototyping" },
-			{ name: "Excalidraw", description: "Technical diagrams and sketches" },
-			{ name: "Spline", description: "3D design for web" },
+			{
+				name: "Claude",
+				description: "AI assistant for development and research",
+			},
+			{
+				name: "MCP Servers",
+				description: "Model Context Protocol integrations",
+			},
+			{
+				name: "Desktop Commander",
+				description: "File system and process automation",
+			},
+		],
+	},
+	{
+		title: "Work Tech Stack (SWMS)",
+		items: [
+			{ name: ".NET Core / C#", description: "Backend microservices" },
+			{
+				name: "Temporal.io",
+				description: "Workflow orchestration (trip lifecycle)",
+			},
+			{ name: "Entity Framework Core", description: "ORM / data access" },
+			{ name: "PostgreSQL 15+", description: "Primary transactional database" },
+			{ name: "MongoDB", description: "Analytics and IoT data" },
+			{ name: "Angular LTS", description: "Admin Portal frontend" },
+			{ name: "Next.js", description: "Client Portal frontend" },
+			{ name: "React Native", description: "Cross-platform mobile app" },
+			{ name: "Redis", description: "Caching and config hot-reload" },
+			{ name: "Kubernetes", description: "Container orchestration" },
+		],
+	},
+	{
+		title: "Portfolio Tech Stack",
+		items: [
+			{ name: "TypeScript", description: "Primary language" },
+			{ name: "Next.js 14+", description: "React framework with App Router" },
+			{ name: "Tailwind CSS", description: "Utility-first styling" },
+			{
+				name: "React Three Fiber",
+				description: "3D graphics and visualizations",
+			},
+			{ name: "p5.js", description: "Creative coding and generative art" },
+			{ name: "Hono", description: "Lightweight API routes" },
+			{ name: "Prisma", description: "Type-safe ORM" },
 		],
 	},
 	{
 		title: "Productivity",
 		items: [
-			{ name: "Obsidian", description: "Knowledge management and notes" },
-			{ name: "Linear", description: "Project and issue tracking" },
-			{ name: "Raycast", description: "macOS launcher and shortcuts" },
-			{ name: "Arc Browser", description: "Primary web browser" },
+			{ name: "Jira", description: "Project tracking (occasional)" },
+			{ name: "Notion", description: "Documentation and knowledge base" },
 		],
 	},
 	{
 		title: "Hardware",
 		items: [
-			{ name: "Custom PC", description: "Ryzen 9 / RTX 4080 / 64GB RAM" },
-			{ name: 'LG 32" 4K Monitor', description: "Primary display" },
-			{ name: "Keychron K2", description: "Mechanical keyboard" },
-			{ name: "Logitech MX Master 3", description: "Mouse" },
-		],
-	},
-	{
-		title: "Tech Stack",
-		items: [
-			{ name: "TypeScript", description: "Primary programming language" },
-			{ name: "NestJS", description: "Backend framework" },
-			{ name: "Next.js", description: "Frontend framework" },
-			{ name: "PostgreSQL", description: "Primary database" },
-			{ name: "Prisma", description: "ORM" },
-			{ name: "Redis", description: "Caching and real-time" },
-			{ name: "Tailwind CSS", description: "Styling" },
+			{
+				name: "MSI Titan 18 HX AI",
+				description:
+					'Intel Core Ultra 9 285HX / RTX 5090 24GB / 96GB DDR5 / 18" 4K MiniLED',
+			},
+			{
+				name: "Huawei MateView GT x2",
+				description: '34" Curved 1500R / 3440x1440 / 165Hz / Built-in SoundBar',
+			},
+			{
+				name: "Corsair K100 RGB",
+				description:
+					"Optical-Mechanical / OPX Switches / 8000Hz / iCUE Control Wheel",
+			},
+			{
+				name: "Razer Naga V2 Pro",
+				description:
+					"Wireless MMO / 3 Swappable Side Plates / Focus Pro 30K / HyperSpeed",
+			},
 		],
 	},
 ];
