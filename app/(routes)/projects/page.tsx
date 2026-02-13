@@ -35,14 +35,10 @@ const PROJECTS: Project[] = [
 	},
 ];
 
-function ProjectPreview({
-	project,
-}: {
-	project: Project;
-}) {
+function ProjectPreview({ project }: { project: Project }) {
 	if (project.previewComponent === "ecoops-logo") {
 		return (
-			<div className="aspect-video mb-4 rounded-md bg-gradient-to-br from-purple-950/40 via-blue-950/30 to-teal-950/40 border border-purple-900/20 flex items-center justify-center overflow-hidden">
+			<div className="aspect-video mb-4 rounded-md bg-linear-to-br from-purple-950/40 via-blue-950/30 to-teal-950/40 border border-purple-900/20 flex items-center justify-center overflow-hidden">
 				<EcoOpsLogo
 					height={60}
 					variant="full"

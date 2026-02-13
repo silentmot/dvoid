@@ -47,7 +47,7 @@ const CASE_STUDIES: CaseStudy[] = [
 function CaseStudyMedia({ study, index }: { study: CaseStudy; index: number }) {
 	if (study.mediaComponent === "ecoops-logo") {
 		return (
-			<div className="md:w-1/3 aspect-video rounded-md bg-gradient-to-br from-emerald-950/50 to-slate-900/80 flex items-center justify-center shrink-0 overflow-hidden border border-emerald-900/30">
+			<div className="md:w-1/3 aspect-video rounded-md bg-linear-to-br from-emerald-950/50 to-slate-900/80 flex items-center justify-center shrink-0 overflow-hidden border border-emerald-900/30">
 				<EcoOpsLogo
 					height={80}
 					variant="full"

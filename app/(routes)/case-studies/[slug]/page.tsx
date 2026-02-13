@@ -117,7 +117,7 @@ export function generateStaticParams() {
 function HeroMedia({ feature }: { feature?: "ecoops-logo" }) {
 	if (feature === "ecoops-logo") {
 		return (
-			<div className="mb-12 p-8 rounded-lg bg-gradient-to-br from-emerald-950/40 to-slate-900/60 border border-emerald-900/20 flex items-center justify-center">
+			<div className="mb-12 p-8 rounded-lg bg-linear-to-br from-emerald-950/40 to-slate-900/60 border border-emerald-900/20 flex items-center justify-center">
 				<EcoOpsLogo
 					height={120}
 					variant="full"
