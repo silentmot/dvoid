@@ -53,7 +53,7 @@ const Navigation: FC = () => {
 							href="/"
 							className="text-xl font-bold tracking-tighter text-foreground hover:text-primary transition-colors"
 						>
-							DvoiD
+							VoiD Tech
 						</Link>
 
 						{/* Desktop Navigation */}
