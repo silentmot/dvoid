@@ -305,126 +305,126 @@ export function DottedGridDemo({
 
 			{/* 4. CONTROLS OVERLAY (For discussion/debug) */}
 			{!hideControls && (
-			<div className="absolute top-6 right-6 z-50 p-4 rounded-xl backdrop-blur-md border border-white/10 shadow-2xl w-64 space-y-4 bg-black/40 text-white">
-				<div className="flex items-center gap-2 pb-2 border-b border-white/10">
-					<Layers className="w-4 h-4 text-teal-400" />
-					<h2 className="text-xs font-bold tracking-wider uppercase">
-						Vis Controller
-					</h2>
-				</div>
+				<div className="absolute top-6 right-6 z-50 p-4 rounded-xl backdrop-blur-md border border-white/10 shadow-2xl w-64 space-y-4 bg-black/40 text-white">
+					<div className="flex items-center gap-2 pb-2 border-b border-white/10">
+						<Layers className="w-4 h-4 text-teal-400" />
+						<h2 className="text-xs font-bold tracking-wider uppercase">
+							Vis Controller
+						</h2>
+					</div>
 
-				{/* Theme Toggle */}
-				<div className="flex items-center justify-between">
-					<span className="text-xs text-gray-400 flex items-center gap-2">
-						{theme === "dark" ? (
-							<Moon className="w-3 h-3" />
-						) : (
-							<Sun className="w-3 h-3" />
-						)}
-						Theme
-					</span>
-					<div className="flex bg-white/10 rounded-lg p-0.5">
+					{/* Theme Toggle */}
+					<div className="flex items-center justify-between">
+						<span className="text-xs text-gray-400 flex items-center gap-2">
+							{theme === "dark" ? (
+								<Moon className="w-3 h-3" />
+							) : (
+								<Sun className="w-3 h-3" />
+							)}
+							Theme
+						</span>
+						<div className="flex bg-white/10 rounded-lg p-0.5">
+							<button
+								onClick={() => setTheme("dark")}
+								className={cn(
+									"px-2 py-1 rounded text-[10px] transition-all",
+									theme === "dark"
+										? "bg-teal-600 text-white"
+										: "hover:text-white/80",
+								)}
+							>
+								Dark
+							</button>
+							<button
+								onClick={() => setTheme("light")}
+								className={cn(
+									"px-2 py-1 rounded text-[10px] transition-all",
+									theme === "light"
+										? "bg-teal-600 text-white"
+										: "hover:text-white/80",
+								)}
+							>
+								Light
+							</button>
+						</div>
+					</div>
+
+					{/* Particles Toggle */}
+					<div className="flex items-center justify-between">
+						<span className="text-xs text-gray-400 flex items-center gap-2">
+							<Monitor className="w-3 h-3" />
+							3D Particles
+						</span>
 						<button
-							onClick={() => setTheme("dark")}
+							onClick={() => setShowParticles(!showParticles)}
 							className={cn(
-								"px-2 py-1 rounded text-[10px] transition-all",
-								theme === "dark"
-									? "bg-teal-600 text-white"
-									: "hover:text-white/80",
+								"w-8 h-4 rounded-full relative transition-colors",
+								showParticles ? "bg-teal-500" : "bg-white/20",
 							)}
 						>
-							Dark
-						</button>
-						<button
-							onClick={() => setTheme("light")}
-							className={cn(
-								"px-2 py-1 rounded text-[10px] transition-all",
-								theme === "light"
-									? "bg-teal-600 text-white"
-									: "hover:text-white/80",
-							)}
-						>
-							Light
+							<div
+								className={cn(
+									"absolute top-0.5 w-3 h-3 bg-white rounded-full transition-all",
+									showParticles ? "left-4.5" : "left-0.5",
+								)}
+							/>
 						</button>
 					</div>
-				</div>
 
-				{/* Particles Toggle */}
-				<div className="flex items-center justify-between">
-					<span className="text-xs text-gray-400 flex items-center gap-2">
-						<Monitor className="w-3 h-3" />
-						3D Particles
-					</span>
-					<button
-						onClick={() => setShowParticles(!showParticles)}
-						className={cn(
-							"w-8 h-4 rounded-full relative transition-colors",
-							showParticles ? "bg-teal-500" : "bg-white/20",
-						)}
-					>
-						<div
+					{/* Grid Toggle */}
+					<div className="flex items-center justify-between">
+						<span className="text-xs text-gray-400 flex items-center gap-2">
+							<MousePointer2 className="w-3 h-3" />
+							Infinite Grid
+						</span>
+						<button
+							onClick={() => setShowGrid(!showGrid)}
 							className={cn(
-								"absolute top-0.5 w-3 h-3 bg-white rounded-full transition-all",
-								showParticles ? "left-4.5" : "left-0.5",
+								"w-8 h-4 rounded-full relative transition-colors",
+								showGrid ? "bg-teal-500" : "bg-white/20",
 							)}
-						/>
-					</button>
-				</div>
+						>
+							<div
+								className={cn(
+									"absolute top-0.5 w-3 h-3 bg-white rounded-full transition-all",
+									showGrid ? "left-4.5" : "left-0.5",
+								)}
+							/>
+						</button>
+					</div>
 
-				{/* Grid Toggle */}
-				<div className="flex items-center justify-between">
-					<span className="text-xs text-gray-400 flex items-center gap-2">
-						<MousePointer2 className="w-3 h-3" />
-						Infinite Grid
-					</span>
-					<button
-						onClick={() => setShowGrid(!showGrid)}
-						className={cn(
-							"w-8 h-4 rounded-full relative transition-colors",
-							showGrid ? "bg-teal-500" : "bg-white/20",
-						)}
-					>
-						<div
+					{/* Mask Toggle */}
+					<div className="flex items-center justify-between">
+						<span className="text-xs text-gray-400 flex items-center gap-2">
+							{showMask ? (
+								<Eye className="w-3 h-3" />
+							) : (
+								<EyeOff className="w-3 h-3" />
+							)}
+							Mouse Mask
+						</span>
+						<button
+							onClick={() => setShowMask(!showMask)}
 							className={cn(
-								"absolute top-0.5 w-3 h-3 bg-white rounded-full transition-all",
-								showGrid ? "left-4.5" : "left-0.5",
+								"w-8 h-4 rounded-full relative transition-colors",
+								showMask ? "bg-teal-500" : "bg-white/20",
 							)}
-						/>
-					</button>
-				</div>
+						>
+							<div
+								className={cn(
+									"absolute top-0.5 w-3 h-3 bg-white rounded-full transition-all",
+									showMask ? "left-4.5" : "left-0.5",
+								)}
+							/>
+						</button>
+					</div>
 
-				{/* Mask Toggle */}
-				<div className="flex items-center justify-between">
-					<span className="text-xs text-gray-400 flex items-center gap-2">
-						{showMask ? (
-							<Eye className="w-3 h-3" />
-						) : (
-							<EyeOff className="w-3 h-3" />
-						)}
-						Mouse Mask
-					</span>
-					<button
-						onClick={() => setShowMask(!showMask)}
-						className={cn(
-							"w-8 h-4 rounded-full relative transition-colors",
-							showMask ? "bg-teal-500" : "bg-white/20",
-						)}
-					>
-						<div
-							className={cn(
-								"absolute top-0.5 w-3 h-3 bg-white rounded-full transition-all",
-								showMask ? "left-4.5" : "left-0.5",
-							)}
-						/>
-					</button>
+					<div className="pt-2 border-t border-white/10">
+						<p className="text-[10px] text-gray-500 leading-tight">
+							Move mouse to reveal grid. Particles drift in background.
+						</p>
+					</div>
 				</div>
-
-				<div className="pt-2 border-t border-white/10">
-					<p className="text-[10px] text-gray-500 leading-tight">
-						Move mouse to reveal grid. Particles drift in background.
-					</p>
-				</div>
-			</div>
 			)}
 
 			<div className="absolute inset-0 flex items-center justify-center pointer-events-none z-40">
