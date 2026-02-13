@@ -3,7 +3,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import dynamic from "next/dynamic";
 import type { ComponentProps } from "react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import CorrelationLoader from "./correlation-loader";
 
 type RealityCompilerHeroProps = ComponentProps<
@@ -18,13 +18,26 @@ const RealityCompilerHero = dynamic<RealityCompilerHeroProps>(
 	},
 );
 
+// Track if the hero has been loaded in this session
+let hasLoadedOnce = false;
+
 export default function RealityCompilerHeroClient(
 	props: RealityCompilerHeroProps,
 ) {
-	const [isLoading, setIsLoading] = useState(true);
-	const [heroReady, setHeroReady] = useState(false);
+	const [isLoading, setIsLoading] = useState(!hasLoadedOnce);
+	const [heroReady, setHeroReady] = useState(hasLoadedOnce);
+	const hasInitialized = useRef(false);
 
 	useEffect(() => {
+		// Skip animation if already loaded once in this session
+		if (hasLoadedOnce || hasInitialized.current) {
+			setIsLoading(false);
+			setHeroReady(true);
+			return;
+		}
+
+		hasInitialized.current = true;
+
 		// Minimum display time for the loader animation to complete
 		const minDisplayTime = 4200;
 		const startTime = Date.now();
@@ -37,7 +50,10 @@ export default function RealityCompilerHeroClient(
 			setTimeout(() => {
 				setHeroReady(true);
 				// Small delay before hiding loader for smooth transition
-				setTimeout(() => setIsLoading(false), 300);
+				setTimeout(() => {
+					setIsLoading(false);
+					hasLoadedOnce = true;
+				}, 300);
 			}, remaining);
 		};
 
