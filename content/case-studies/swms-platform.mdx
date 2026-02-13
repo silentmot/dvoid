@@ -1,83 +1,97 @@
 ---
 title: SWMS Platform
-description: Smart Waste Management System automating C&D recycling facility operations through 4-stage workflow orchestration.
+description: Event-driven waste management platform automating C&D recycling operations through device orchestration and real-time trip lifecycle management.
 date: 2021-01-01
 tags:
   - Industrial IoT
-  - NestJS
-  - PostgreSQL
-  - Real-time
+  - .NET Core
+  - Microservices
+  - Temporal.io
   - Hardware Integration
 featured: true
-client: Saudi Waste Management Company
-role: Technical Operations Specialist
-duration: 4 years (ongoing)
+client: Sustainability Solutions Co.
+role: System Architect
+duration: 4 years (architecture)
 stack:
-  - NestJS
+  - .NET Core
+  - Entity Framework Core
+  - Temporal.io
+  - Angular
   - Next.js
+  - React Native
   - PostgreSQL
-  - Prisma
+  - MongoDB
   - Redis
-  - Docker
-  - ZKTeco SDK
-  - Hikvision API
-  - Mettler Toledo DDE
+  - Kubernetes
 ---
 
 ## Problem
 
-Manual tracking of waste trucks through recycling facilities led to inconsistent data, unauthorized access, and inaccurate weight measurements. The facility needed a unified system to manage gate access, weighbridge operations, and material processing.
+Manual tracking of waste trucks through recycling facilities led to inconsistent data, unauthorized access, and inaccurate weight measurements. Operators relied on paper-based logs and disconnected software systems. Weight discrepancies were common, and there was no real-time visibility into facility throughput.
 
-Operators relied on paper-based logs and disconnected software systems. Weight discrepancies were common, and there was no real-time visibility into facility throughput.
+The core challenge was converting physical device events—license plate recognition, RFID detection, scale weight readings—into authoritative trip records with automated state progression.
 
-## Scope
+## Solution
 
-Design and implement a 4-stage workflow orchestration system integrating:
+Design an event-driven platform that orchestrates physical device events into automated trip lifecycles. The system converts device detections into trip state transitions without manual intervention, enforcing authorization rules at every checkpoint.
 
-- **Gate Entry**: ZKTeco access control with ANPR camera integration
-- **Weighbridge In**: Mettler Toledo scale integration for tare weight capture
-- **Processing**: Material classification and sorting operations
-- **Weighbridge Out**: Net weight calculation and automated ticketing
+### Architectural Layers
 
-The system must handle 24/7 operations with minimal downtime and support offline fallback modes.
+The system operates across four architectural layers:
+
+**Foundation Layer** establishes system infrastructure through dynamic configuration management, user authentication with role-based access control, and facility registry that defines where devices are installed and pricing models apply.
+
+**Supporting Layer** defines authorization frameworks—contract-based vehicle access permissions and vehicle registration for automated trip flow—that enable operational modules to function.
+
+**Core Operations Layer** orchestrates vehicle movement lifecycles through device detection and weight capture correlation, manages physical device event processing, tracks material inventory, and processes financial transactions.
+
+**Intelligence Layer** transforms operational data into decision-support systems through real-time dashboards, compliance reporting with audit trails, and predictive analytics.
 
 ## Architecture
 
-### Backend (NestJS)
+### Backend (.NET Core Microservices)
 
-Domain-Driven Design with event-sourced workflow states. Each stage transition is recorded as an immutable event, enabling full audit trails and state reconstruction.
+Domain-driven design with event-sourced workflow states. Each device event is recorded as an immutable record, enabling full audit trails and state reconstruction. Temporal.io orchestrates durable workflows for long-running trip lifecycle management.
 
 ```
 src/
-├── modules/
-│   ├── gate/
-│   ├── weighbridge/
-│   ├── processing/
-│   └── ticketing/
-├── infrastructure/
-│   ├── hardware/
-│   │   ├── zkteco/
-│   │   ├── hikvision/
-│   │   └── mettler-toledo/
-│   └── persistence/
-└── shared/
-    └── domain/
+├── Services/
+│   ├── Trip.Service/
+│   ├── Vehicle.Service/
+│   ├── Contract.Service/
+│   ├── Device.Service/
+│   └── Payment.Service/
+├── Infrastructure/
+│   ├── Hardware/
+│   │   ├── ZKTeco/
+│   │   ├── Hikvision/
+│   │   └── ScaleIndicators/
+│   └── Persistence/
+└── Shared/
+    └── Domain/
 ```
 
-### Hardware Integration
+### Hardware Integration Layer
 
-- **ZKTeco**: TCP socket connection for real-time access events
-- **Hikvision**: ISAPI HTTP calls for ANPR plate recognition
-- **Mettler Toledo**: DDE protocol for scale weight readings
+Multi-vendor abstraction enables interchangeable hardware components:
 
-### Real-time Updates
+- **Access Control**: ZKTeco SDK for barrier gates and RFID readers
+- **Vehicle Recognition**: Hikvision ISAPI for ANPR plate detection
+- **Weight Capture**: Protocol adapters for Mettler Toledo, Avery Weigh-Tronix, Dini Argeo scale indicators
 
-Redis pub/sub for broadcasting workflow state changes to connected clients. WebSocket connections maintain live dashboard updates.
+### Device-to-Trip Correlation
+
+Scale indicators report numeric weight values without identifying the source vehicle. The system correlates weights to trips by detecting the vehicle (LPR/UHF/QR) at each scale location—inbound detection at main gate cannot be assumed to correlate with scale readings.
+
+### Real-time Processing
+
+Redis pub/sub broadcasts workflow state changes to connected clients. WebSocket connections maintain live dashboard updates across Admin Portal (Angular), Client Portal (Next.js), and Mobile App (React Native).
 
 ## Results
 
-- Automated processing of trucks through all 4 stages
-- Eliminated manual data entry errors
-- Real-time visibility into facility operations
-- Integration with 3 hardware vendor ecosystems
-- 99.5% uptime over 4 years of operation
+- Device events automatically initiate and progress trips through lifecycle states
+- Contract-based authorization enforces access rules at every checkpoint
+- Weight correlation engine matches scale readings to active trips
+- Event-sourced architecture provides complete audit trail for regulatory compliance
+- Multi-vendor hardware layer enables interchangeable device components
+- Multi-platform frontend serves operators, clients, and mobile users

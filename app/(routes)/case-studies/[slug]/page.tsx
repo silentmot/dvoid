@@ -28,37 +28,38 @@ const CASE_STUDIES: Record<
 	"swms-platform": {
 		title: "SWMS Platform",
 		description:
-			"Smart Waste Management System automating C&D recycling facility operations through 4-stage workflow orchestration.",
-		client: "Saudi Waste Management Company",
-		duration: "4 years (ongoing)",
-		role: "Technical Operations Specialist",
+			"Event-driven waste management platform automating C&D recycling operations through device orchestration and real-time trip lifecycle management.",
+		client: "Sustainability Solutions Co.",
+		duration: "4 years (architecture)",
+		role: "System Architect",
 		stack: [
-			"NestJS",
+			".NET Core",
+			"Entity Framework Core",
+			"Temporal.io",
+			"Angular",
 			"Next.js",
+			"React Native",
 			"PostgreSQL",
-			"Prisma",
+			"MongoDB",
 			"Redis",
-			"Docker",
-			"ZKTeco SDK",
-			"Hikvision API",
-			"Mettler Toledo DDE",
+			"Kubernetes",
 		],
 		sections: {
 			problem:
-				"Manual tracking of waste trucks through recycling facilities led to inconsistent data, unauthorized access, and inaccurate weight measurements. The facility needed a unified system to manage gate access, weighbridge operations, and material processing.",
+				"Manual tracking of waste trucks through recycling facilities led to inconsistent data, unauthorized access, and inaccurate weight measurements. The core challenge was converting physical device events—license plate recognition, RFID detection, scale weight readings—into authoritative trip records with automated state progression.",
 			scope:
-				"Design and implement a 4-stage workflow orchestration system integrating access control (ZKTeco), camera systems (Hikvision), and weighing equipment (Mettler Toledo). The system must handle 24/7 operations with minimal downtime.",
+				"Design an event-driven platform that orchestrates physical device events into automated trip lifecycles. The system converts device detections into trip state transitions without manual intervention, enforcing authorization rules at every checkpoint across multi-site operations.",
 			architecture:
-				"Domain-Driven Design with event-sourced workflow states. NestJS backend with PostgreSQL for persistence, Redis for real-time events, and dedicated hardware integration services. Next.js frontend with real-time WebSocket updates.",
+				"Layered microservices architecture with .NET Core backend and Temporal.io workflow orchestration. Foundation layer handles configuration and authentication. Supporting layer manages contract-based vehicle authorization. Core operations layer orchestrates device events into trip lifecycles with weight correlation. Intelligence layer provides dashboards and predictive analytics. Multi-vendor hardware abstraction enables interchangeable device components.",
 			results:
-				"Automated processing of trucks through all 4 stages. Eliminated manual data entry errors. Real-time visibility into facility operations. Integration with 3 hardware vendor ecosystems.",
+				"Device events automatically initiate and progress trips through lifecycle states. Contract-based authorization enforces access rules at every checkpoint. Weight correlation engine matches scale readings to active trips. Event-sourced architecture provides complete audit trail for regulatory compliance.",
 		},
 	},
 	"ecoops-dashboard": {
 		title: "EcoOps Dashboard",
 		description:
 			"C&D Recycling Facility Operations Management System transforming manual Excel workflows into a scalable web platform.",
-		client: "Sustainability Solutions Company",
+		client: "Sustainability Solutions Co.",
 		duration: "8 months",
 		role: "Full Stack Developer",
 		stack: [

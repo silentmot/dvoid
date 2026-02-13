@@ -24,11 +24,11 @@ const CASE_STUDIES: CaseStudy[] = [
 		slug: "swms-platform",
 		title: "SWMS Platform",
 		description:
-			"Architecting a 4-stage workflow orchestration system for C&D waste recycling facilities.",
-		client: "Saudi Waste Management Company",
-		duration: "4 years (ongoing)",
-		role: "Technical Operations Specialist",
-		tags: ["Industrial IoT", "NestJS", "PostgreSQL", "Real-time"],
+			"Event-driven waste management platform automating C&D recycling operations through device orchestration and real-time trip lifecycle management.",
+		client: "Sustainability Solutions Co.",
+		duration: "4 years (architecture)",
+		role: "System Architect",
+		tags: [".NET Core", "Temporal.io", "Angular", "Industrial IoT"],
 		mediaComponent: null,
 	},
 	{
@@ -36,7 +36,7 @@ const CASE_STUDIES: CaseStudy[] = [
 		title: "EcoOps Dashboard",
 		description:
 			"C&D Recycling Facility Operations Management System transforming manual Excel workflows into a scalable web platform.",
-		client: "Sustainability Solutions Company",
+		client: "Sustainability Solutions Co.",
 		duration: "8 months",
 		role: "Full Stack Developer",
 		tags: ["Next.js 16", "Hono RPC", "Prisma", "Better Auth"],

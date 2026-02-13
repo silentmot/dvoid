@@ -7,59 +7,55 @@ import { type FC, useEffect, useRef } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
 
-interface WorkflowStage {
-	id: number;
+interface Capability {
+	id: string;
 	title: string;
 	description: string;
-	icon: string;
 }
 
-const WORKFLOW_STAGES: WorkflowStage[] = [
+const CAPABILITIES: Capability[] = [
 	{
-		id: 1,
-		title: "Gate Entry",
+		id: "device-orchestration",
+		title: "Device-Driven Automation",
 		description:
-			"ZKTeco access control, ANPR camera integration, driver authentication",
-		icon: "01",
+			"Physical device events (LPR, UHF, weighbridge) initiate and progress trips without manual intervention",
 	},
 	{
-		id: 2,
-		title: "Weighbridge In",
+		id: "authorization-first",
+		title: "Authorization-First Access",
 		description:
-			"Mettler Toledo scale integration, tare weight capture, load verification",
-		icon: "02",
+			"Contract-based vehicle permissions enforce site, zone, and time-window access at every gate",
 	},
 	{
-		id: 3,
-		title: "Processing",
+		id: "weight-correlation",
+		title: "Weight Correlation Engine",
 		description:
-			"Material classification, sorting operations, quality assessment",
-		icon: "03",
+			"Scale readings automatically correlate to active trips via device detection at each weighbridge",
 	},
 	{
-		id: 4,
-		title: "Weighbridge Out",
+		id: "event-sourced",
+		title: "Event-Sourced Lifecycle",
 		description:
-			"Net weight calculation, automated ticketing, transaction completion",
-		icon: "04",
+			"Immutable event trail enables state reconstruction, audit compliance, and forensic analysis",
 	},
 ];
 
 const TECH_STACK = [
-	"NestJS",
+	".NET Core",
+	"Entity Framework",
+	"Temporal.io",
+	"Angular",
 	"Next.js",
+	"React Native",
 	"PostgreSQL",
-	"Prisma",
+	"MongoDB",
 	"Redis",
-	"Docker",
-	"ZKTeco SDK",
-	"Hikvision API",
-	"Mettler Toledo DDE",
+	"Kubernetes",
 ];
 
 const SwmsOverview: FC = () => {
 	const containerRef = useRef<HTMLDivElement>(null);
-	const stagesRef = useRef<HTMLDivElement[]>([]);
+	const capabilitiesRef = useRef<HTMLDivElement[]>([]);
 
 	useEffect(() => {
 		const container = containerRef.current;
@@ -71,11 +67,11 @@ const SwmsOverview: FC = () => {
 
 		if (prefersReducedMotion) return;
 
-		const stages = stagesRef.current.filter(Boolean);
+		const capabilities = capabilitiesRef.current.filter(Boolean);
 
-		stages.forEach((stage, index) => {
+		capabilities.forEach((capability, index) => {
 			gsap.fromTo(
-				stage,
+				capability,
 				{ opacity: 0, y: 60 },
 				{
 					opacity: 1,
@@ -83,7 +79,7 @@ const SwmsOverview: FC = () => {
 					duration: 0.8,
 					ease: "power3.out",
 					scrollTrigger: {
-						trigger: stage,
+						trigger: capability,
 						start: "top 80%",
 						toggleActions: "play none none reverse",
 					},
@@ -112,55 +108,51 @@ const SwmsOverview: FC = () => {
 						SWMS Platform
 					</h2>
 					<p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-						Smart Waste Management System automating C&D recycling facility
-						operations through a 4-stage workflow orchestration
+						Event-driven waste management platform automating C&D recycling
+						operations through device orchestration and real-time trip
+						lifecycle management
 					</p>
 				</div>
 
-				{/* Stats */}
+				{/* Architecture Highlights */}
 				<div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20">
 					{[
-						{ value: "4", label: "Years Development" },
-						{ value: "4", label: "Workflow Stages" },
-						{ value: "3", label: "Hardware Vendors" },
-						{ value: "24/7", label: "Operation" },
-					].map((stat) => (
+						{ label: "Microservices", detail: "Domain-driven" },
+						{ label: "Multi-Platform", detail: "Web + Mobile" },
+						{ label: "Multi-Vendor", detail: "Hardware layer" },
+						{ label: "Multi-Site", detail: "Operations" },
+					].map((item) => (
 						<div
-							key={stat.label}
+							key={item.label}
 							className="text-center p-6 rounded-lg bg-card border border-border/50"
 						>
-							<div className="text-3xl md:text-4xl font-bold text-primary mb-2">
-								{stat.value}
+							<div className="text-xl md:text-2xl font-bold text-primary mb-2">
+								{item.label}
 							</div>
-							<div className="text-sm text-muted-foreground">{stat.label}</div>
+							<div className="text-sm text-muted-foreground">{item.detail}</div>
 						</div>
 					))}
 				</div>
 
-				{/* Workflow Stages */}
+				{/* Core Capabilities */}
 				<div className="mb-20">
 					<h3 className="text-2xl font-semibold text-foreground mb-8 text-center">
-						Workflow Orchestration
+						Core Capabilities
 					</h3>
-					<div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-						{WORKFLOW_STAGES.map((stage, index) => (
+					<div className="grid md:grid-cols-2 gap-6">
+						{CAPABILITIES.map((capability, index) => (
 							<div
-								key={stage.id}
+								key={capability.id}
 								ref={(el) => {
-									if (el) stagesRef.current[index] = el;
+									if (el) capabilitiesRef.current[index] = el;
 								}}
 								className="relative p-6 rounded-lg bg-card border border-border/50 hover:border-primary/30 transition-colors"
 							>
-								<div className="absolute -top-3 -left-3 w-10 h-10 rounded-full bg-primary/10 border border-primary/30 flex items-center justify-center">
-									<span className="text-xs font-mono text-primary">
-										{stage.icon}
-									</span>
-								</div>
-								<h4 className="text-lg font-medium text-foreground mt-4 mb-2">
-									{stage.title}
+								<h4 className="text-lg font-medium text-foreground mb-2">
+									{capability.title}
 								</h4>
 								<p className="text-sm text-muted-foreground leading-relaxed">
-									{stage.description}
+									{capability.description}
 								</p>
 							</div>
 						))}
