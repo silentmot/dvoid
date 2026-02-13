@@ -27,7 +27,7 @@ export default function ContactPage() {
 				{/* Contact Methods */}
 				<div className="grid md:grid-cols-2 gap-6 mb-16">
 					<a
-						href="mailto:contact@d-void.com"
+						href="mailto:dev@dvoid.app"
 						className="group p-6 rounded-lg bg-card border border-border/50 hover:border-primary/30 transition-all"
 					>
 						<div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
@@ -48,11 +48,11 @@ export default function ContactPage() {
 						<h2 className="text-lg font-semibold text-foreground mb-2">
 							Email
 						</h2>
-						<p className="text-sm text-muted-foreground">contact@d-void.com</p>
+						<p className="text-sm text-muted-foreground">dev@dvoid.app</p>
 					</a>
 
 					<a
-						href="https://linkedin.com/in/dvoid"
+						href="https://www.linkedin.com/in/mtayeb9092/"
 						target="_blank"
 						rel="noopener noreferrer"
 						className="group p-6 rounded-lg bg-card border border-border/50 hover:border-primary/30 transition-all"
@@ -73,7 +73,7 @@ export default function ContactPage() {
 					</a>
 
 					<a
-						href="https://github.com/dvoid"
+						href="https://github.com/silentmot"
 						target="_blank"
 						rel="noopener noreferrer"
 						className="group p-6 rounded-lg bg-card border border-border/50 hover:border-primary/30 transition-all"
@@ -119,7 +119,7 @@ export default function ContactPage() {
 							Location
 						</h2>
 						<p className="text-sm text-muted-foreground">
-							Riyadh, Saudi Arabia
+							Jeddah, Saudi Arabia
 						</p>
 					</div>
 				</div>
