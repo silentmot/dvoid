@@ -15,7 +15,7 @@ Portfolio website showcasing technical operations expertise with productized cas
 | Language | [TypeScript](https://www.typescriptlang.org) (strict mode) | Type safety across the codebase |
 | Styling | [Tailwind CSS 4](https://tailwindcss.com) | Utility-first styling |
 | Components | [shadcn/ui](https://ui.shadcn.com) (base-mira style) | Accessible UI primitives |
-| 3D | [React Three Fiber](https://docs.pmnd.rs/react-three-fiber) + [drei](https://github.com/pmndrs/drei) | Interactive hero section |
+| 3D | [Three.js](https://threejs.org) + [@react-three/fiber](https://docs.pmnd.rs/react-three-fiber) + [drei](https://github.com/pmndrs/drei) | 3D graphics and scene components |
 | Animation | [Motion (Framer Motion)](https://motion.dev) / [GSAP](https://gsap.com) | Component & scroll-driven animations |
 | Scroll | [Lenis](https://github.com/darkroomengineering/lenis) | Smooth scrolling |
 | Content | [MDX](https://mdxjs.com) with gray-matter frontmatter | Projects and case studies |
@@ -90,7 +90,7 @@ Open [http://localhost:3000](http://localhost:3000) to view the site. The dev se
 
 ### Reality Compiler Hero
 
-Interactive 3D scene (React Three Fiber) where the cursor acts as a flashlight, revealing rendered geometry from a wireframe state. Includes a static CSS-only fallback for mobile, reduced-motion preferences, and SSR.
+Dotted-grid canvas scene (`DottedGridDemo` — Three.js particle mesh + SVG grid overlay + framer-motion) with a `CorrelationLoader` sequence on first load. Includes a static CSS-only fallback for mobile, reduced-motion preferences, and SSR.
 
 Source: `components/hero/reality-compiler-hero.client.tsx`, `components/hero/reality-compiler-hero.tsx`
 
@@ -142,9 +142,8 @@ Deployed on [Vercel](https://vercel.com).
 
 | Variable | Purpose | Required |
 | --- | --- | --- |
-| `NEXT_PUBLIC_SITE_URL` | Canonical URL | Yes |
-| `NEXT_PUBLIC_PLAUSIBLE_DOMAIN` | Analytics domain | No |
-| `FORMSPREE_ENDPOINT` | Contact form processing | Yes |
+| `CSP_REPORT_ONLY` | Run CSP in report-only mode (`"true"` to enable) | No |
+| `CSP_REPORT_ENDPOINT` | URI for CSP violation reports | No |
 
 ## Accessibility
 
