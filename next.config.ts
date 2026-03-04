@@ -24,6 +24,7 @@ const securityHeaders = [
 		value: "nosniff",
 	},
 	{
+		// Kept for browsers that do not support CSP frame-ancestors
 		key: "X-Frame-Options",
 		value: "DENY",
 	},
