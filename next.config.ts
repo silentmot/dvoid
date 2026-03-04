@@ -3,22 +3,41 @@ import type { NextConfig } from "next";
 
 const cspDirectives = [
 	"default-src 'self'",
+	"base-uri 'none'",
+	"frame-ancestors 'none'",
+	"object-src 'none'",
+	"form-action 'self'",
 	"script-src 'self' 'unsafe-inline'",
+	"script-src-attr 'none'",
 	"style-src 'self' 'unsafe-inline'",
 	"img-src 'self' data: blob:",
 	"font-src 'self'",
-	"connect-src 'self'",
-	"frame-ancestors 'none'",
-	"base-uri 'self'",
-	"form-action 'self'",
-	"object-src 'none'",
+	"connect-src 'self' https:",
+	"upgrade-insecure-requests",
 ];
+
+const cspValue = cspDirectives.join("; ");
+const cspReportOnlyEnabled = process.env.CSP_REPORT_ONLY === "true";
+const cspReportEndpoint = process.env.CSP_REPORT_ENDPOINT;
 
 const securityHeaders = [
 	{
-		key: "Content-Security-Policy",
-		value: cspDirectives.join("; "),
+		key: cspReportOnlyEnabled
+			? "Content-Security-Policy-Report-Only"
+			: "Content-Security-Policy",
+		value:
+			cspReportOnlyEnabled && cspReportEndpoint
+				? `${cspValue}; report-uri ${cspReportEndpoint}; report-to csp-endpoint`
+				: cspValue,
 	},
+	...(cspReportOnlyEnabled && cspReportEndpoint
+		? [
+				{
+					key: "Reporting-Endpoints",
+					value: `csp-endpoint=\"${cspReportEndpoint}\"`,
+				},
+			]
+		: []),
 	{
 		key: "X-Content-Type-Options",
 		value: "nosniff",
