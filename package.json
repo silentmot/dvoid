@@ -22,7 +22,7 @@
 		"@next/mdx": "^16.1.6",
 		"@react-three/drei": "^10.7.7",
 		"@react-three/fiber": "^9.5.0",
-		"@typescript/native-preview": "^7.0.0-dev.20260207.1",
+		"@typescript/native-preview": "^7.0.0-dev.20260304.1",
 		"@xyflow/react": "^12.10.0",
 		"biome": "^0.3.3",
 		"class-variance-authority": "^0.7.1",
