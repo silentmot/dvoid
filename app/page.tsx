@@ -8,7 +8,7 @@ export default function HomePage() {
 			{/* Hero Section */}
 			<RealityCompilerHeroClient
 				title="DvoiD"
-				subtitle="Technical Operations Specialist"
+				subtitle="Technical Operations Architect"
 				tagline="Compiling industrial systems into operational reality"
 			/>
 

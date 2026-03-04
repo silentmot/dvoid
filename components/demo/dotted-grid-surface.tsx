@@ -20,6 +20,7 @@ import {
 import React, { useEffect, useRef, useState } from "react";
 import { twMerge } from "tailwind-merge";
 import * as THREE from "three";
+import TaglineRotator from "@/components/hero/tagline-rotator";
 
 /**
  * UTILITIES
@@ -435,11 +436,7 @@ export function DottedGridDemo({
 					<h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black tracking-tighter text-white">
 						{title}
 					</h1>
-					{tagline && (
-						<p className="text-sm md:text-base max-w-lg mx-auto text-white/50 font-light leading-relaxed">
-							{tagline}
-						</p>
-					)}
+					{tagline && <TaglineRotator />}
 				</div>
 			</div>
 
