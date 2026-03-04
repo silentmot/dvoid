@@ -1,6 +1,6 @@
-import type { MetadataRoute } from "next";
 import { readdir } from "node:fs/promises";
 import { join } from "node:path";
+import type { MetadataRoute } from "next";
 
 const BASE_URL = "https://d-void.com";
 
